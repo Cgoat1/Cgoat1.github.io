@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cgoat1.github.io/</id>
     <title>cgoat1&apos;s blog</title>
-    <updated>2020-02-11T13:26:08.567Z</updated>
+    <updated>2020-02-11T14:56:17.236Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cgoat1.github.io/"/>
     <link rel="self" href="https://cgoat1.github.io/atom.xml"/>
@@ -10,6 +10,263 @@
     <logo>https://cgoat1.github.io/images/avatar.png</logo>
     <icon>https://cgoat1.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, cgoat1&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[洛谷P1016 旅行家的预算]]></title>
+        <id>https://cgoat1.github.io/post/luo-gu-p1016-lu-xing-jia-de-yu-suan</id>
+        <link href="https://cgoat1.github.io/post/luo-gu-p1016-lu-xing-jia-de-yu-suan">
+        </link>
+        <updated>2020-02-11T14:54:26.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1题面">1.题面</h2>
+<h3 id="题目描述">题目描述</h3>
+<p>一个旅行家想驾驶汽车以最少的费用从一个城市到另一个城市（假设出发时油箱是空的）。给定两个城市之间的距离D1、汽车油箱的容量C（以升为单位）、每升汽油能行驶的距离D2、出发点每升汽油价格P和沿途油站数N（N可以为零），油站ii离出发点的距离Di、每升汽油价格Pi（i=1,2,…,N）。计算结果四舍五入至小数点后两位。如果无法到达目的地，则输出“No Solution”。</p>
+<h3 id="输入格式">输入格式</h3>
+<p>第一行，D1，C，D2，P，N。</p>
+<p>接下来有N行。</p>
+<p>第i+1行，两个数字，油站i离出发点的距离Di和每升汽油价格Pi。</p>
+<h3 id="输出格式">输出格式</h3>
+<p>所需最小费用，计算结果四舍五入至小数点后两位。如果无法到达目的地，则输出“No Solution”。</p>
+<h3 id="输入输出样例">输入输出样例</h3>
+<h4 id="输入">输入</h4>
+<p>275.6 11.9 27.4 2.8 2<br>
+102.0 2.9<br>
+220.0 2.2</p>
+<h4 id="输出">输出</h4>
+<p>26.95</p>
+<h3 id="说明提示">说明/提示</h3>
+<p>N≤6,其余数字≤500</p>
+<h2 id="2解题思路反复贪心">2.解题思路：反复贪心</h2>
+<p><img src="https://img-blog.csdnimg.cn/20191229224412171.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTI1NDY4Nw==,size_16,color_FFFFFF,t_70" alt="" loading="lazy"><br>
+在图中红框范围内</p>
+<ol>
+<li>若有 p[0]&gt;p[j]，则找到第一个满足条件的 j，在A处只加注只可以到 j 处的油，再把 j 处看作为A重新进行如上操作，直到到终点为止</li>
+<li>若无 p[0]&gt;p[j]，则找到其中最小的p[j]，在A处加满油，求出到 j 处油箱剩余的容积，再把 j 处看作为A重新进行如上操作，直到到终点为止</li>
+<li>若无 j，则输出“No Solution”</li>
+</ol>
+<h2 id="3代码实现">3.代码实现</h2>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;stdio.h&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+struct node
+{
+	double d,p;
+}a[15];
+int main()
+{
+	double d1,c,d2,k,ans=0,temp=0; //temp表示油箱还剩多少油 
+	int n,i,flag=0;
+	cin&gt;&gt;d1&gt;&gt;c&gt;&gt;d2&gt;&gt;a[0].p&gt;&gt;n;
+	a[0].d=0;
+	a[n+1].d=d1;
+	k=c*d2;
+	for(i=1;i&lt;=n;i++)
+	{
+		cin&gt;&gt;a[i].d&gt;&gt;a[i].p;	
+	}
+	i=0;
+	temp=0;
+	while(a[i].d&lt;d1)
+	{
+		int j=i+1,minp=a[i+1].p,minn=i+1;
+		if(a[j].d-a[i].d&gt;k)
+		{
+			cout&lt;&lt;&quot;No Solution&quot;&lt;&lt;endl;
+			return 0;
+		}
+		flag=0;
+		while(a[j].d-a[i].d&lt;=k &amp;&amp; j&lt;=n+1)
+		{
+			if(a[j].p&lt;a[i].p)
+			{
+				if(temp&gt;(a[j].d-a[i].d)/d2)
+					temp-=(a[j].d-a[i].d)/d2;
+				else
+				{
+					ans+=((a[j].d-a[i].d)/d2-temp)*a[i].p;
+					temp=0;	
+				}
+				i=j;
+				flag=1;
+				break;
+			}
+			if(a[j].p&gt;=a[i].p &amp;&amp; a[j].p&lt;minp)
+			{
+				minp=a[j].p;
+				minn=j;	
+			}
+			j++;
+		}
+		if(flag==0)
+		{
+			ans+=(c-temp)*a[i].p;
+			temp=(k-a[minn].d+a[i].d)/d2;
+			i=minn;
+		}
+		//cout&lt;&lt;temp&lt;&lt;&quot; &quot;&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;ans&lt;&lt;endl;
+	}
+	printf(&quot;%.2lf&quot;,ans);
+ 	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[学习并查集回顾]]></title>
+        <id>https://cgoat1.github.io/post/xue-xi-bing-cha-ji-hui-gu</id>
+        <link href="https://cgoat1.github.io/post/xue-xi-bing-cha-ji-hui-gu">
+        </link>
+        <updated>2020-02-11T14:51:15.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="1例题hdu1232-畅通工程">1.例题：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1232">hdu1232 畅通工程</a></h3>
+<h4 id="1题目搬运">(1)题目搬运</h4>
+<h5 id="题目背景">题目背景</h5>
+<p>某省调查城镇交通状况，得到现有城镇道路统计表，表中列出了每条道路直接连通的城镇。省政府“畅通工程”的目标是使全省任何两个城镇间都可以实现交通（但不一定有直接的道路相连，只要互相间接通过道路可达即可）。问最少还需要建设多少条道路？</p>
+<h5 id="输入格式">输入格式</h5>
+<p>测试输入包含若干测试用例。每个测试用例的第1行给出两个正整数，分别是城镇数目N ( &lt; 1000 )和道路数目M；随后的M行对应M条道路，每行给出一对正整数，分别是该条道路直接连通的两个城镇的编号。为简单起见，城镇从1到N编号。<br>
+注意:两个城市之间可以有多条道路相通,也就是说<br>
+3 3<br>
+1 2<br>
+1 2<br>
+2 1<br>
+这种输入也是合法的<br>
+当N为0时，输入结束，该用例不被处理。</p>
+<h5 id="输出格式">输出格式</h5>
+<p>对每个测试用例，在1行里输出最少还需要建设的道路数目。</p>
+<h5 id="输入样例">输入样例</h5>
+<p>4 2<br>
+1 3<br>
+4 3<br>
+3 3<br>
+1 2<br>
+1 3<br>
+2 3<br>
+5 2<br>
+1 2<br>
+3 5<br>
+999 0<br>
+0</p>
+<h5 id="输出样例">输出样例</h5>
+<p>1<br>
+0<br>
+2<br>
+998</p>
+<h4 id="2题目分析">(2)题目分析</h4>
+<p>由于题目本身给的输入样例太水了并且是多组数据输入，不好分析，所以我们先自己编一个样例，下面是我自己编的一个样例：<br>
+输入<br>
+10 7<br>
+1 2<br>
+2 4<br>
+2 3<br>
+7 8<br>
+5 8<br>
+2 9<br>
+6 10<br>
+输出<br>
+2<br>
+依照这个样例我们可以画出如下图所示的一幅图，其中每个城市用一个编号来表示，每条边表示这两个城市之间有一条路径<br>
+<img src="https://img-blog.csdnimg.cn/20200119235803180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTI1NDY4Nw==,size_16,color_FFFFFF,t_70" alt="图2-1-2-1" loading="lazy"><br>
+接下来我们来分析一下这个图，从这个图中我们可以看到有三个城市堆，分别是1、2、3、4、9城市一堆，5、7、8城市一堆和6、10城市一堆，这三个堆互不相连，所以这道题中要求的最少增加的路径数肯定等于把这三堆连起来所用的最少增加的路径数，同时也等于城市堆数减一<br>
+所以，问题转化为了求城市堆的个数，但是如何确定城市的堆数呢，我们可以在城市内部建立联系，我们可以让每个城市都有一个属于他自己的一个祖先，合并的时候把他们的祖先合并，然后看看有几个城市没有祖先了或者说他自己就是他自己的祖先，那么这些城市堆数加1</p>
+<h4 id="3代码实现">(3)代码实现</h4>
+<h5 id="1总体代码">1.总体代码</h5>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+using namespace std;
+int f[1010];
+int n,m,i,j,p,q;
+int getf(int i)
+{
+	if(f[i]==i)
+		return i;
+	f[i]=getf(f[i]);
+	return f[i];
+}
+void un(int x,int y)
+{
+	int fx,fy;
+	fx=getf(x);
+	fy=getf(y);
+	if(fx!=fy)
+		f[fy]=fx;
+	return ;
+}
+int main()
+{
+	while(cin&gt;&gt;n &amp;&amp; n!=0)
+	{
+		int ans=0;
+		cin&gt;&gt;m;
+		for(i=1;i&lt;=n;i++)
+			f[i]=i;
+		for(i=1;i&lt;=m;i++)
+		{
+			cin&gt;&gt;p&gt;&gt;q;
+			un(p,q);
+		}
+		for(i=1;i&lt;=n;i++)
+			if(f[i]==i)
+				ans++;
+		cout&lt;&lt;ans-1&lt;&lt;endl;
+	}
+	return 0;
+}
+</code></pre>
+<h5 id="2分步讲解">2.分步讲解</h5>
+<h6 id="变量">变量</h6>
+<pre><code class="language-cpp">int f[1010]; //储存第i个城市的祖先是f[i]
+int n,m,i,j,p,q;
+</code></pre>
+<h6 id="主体代码">主体代码</h6>
+<pre><code class="language-cpp">int main()
+{
+	while(cin&gt;&gt;n &amp;&amp; n!=0)
+	{
+		int ans=0;
+		cin&gt;&gt;m;
+		for(i=1;i&lt;=n;i++)
+			f[i]=i; //初始化每个城市的祖先都是自己
+		for(i=1;i&lt;=m;i++)
+		{
+			cin&gt;&gt;p&gt;&gt;q;
+			un(p,q); //合并两个城市p，q
+		}
+		for(i=1;i&lt;=n;i++)
+			if(f[i]==i)
+				ans++; //如果这个城市的祖先是他自己，那么城市堆数加1
+		cout&lt;&lt;ans-1&lt;&lt;endl;
+	}
+	return 0;
+}
+</code></pre>
+<h6 id="查集">查集</h6>
+<p>找祖先的过程</p>
+<pre><code class="language-cpp">int getf(int i)
+{
+	if(f[i]==i) //如果他自己就是他的祖先，那么返回他
+		return i;
+	return getf(f[i]); //如果不是，继续一层层往下找
+}
+</code></pre>
+<p>但是我们还会发现，每一次都从头往后找，有点太麻烦了，于是我们可以每次存储下来他们最终的祖先，这就叫做路径压缩</p>
+<pre><code class="language-cpp">int getf(int i)
+{
+	if(f[i]==i) 
+		return i;
+	f[i]=getf(f[i]); //路径压缩
+	return f[i];
+}
+</code></pre>
+<h6 id="并集">并集</h6>
+<pre><code class="language-cpp">void un(int x,int y)
+{
+	int fx,fy;
+	fx=getf(x); //找祖先
+	fy=getf(y);
+	if(fx!=fy)
+		f[fy]=fx; //把他们祖先合并
+	return ;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[为什么必修5个模块按照1、4、5、2、3顺序合理？(转载)]]></title>
         <id>https://cgoat1.github.io/post/wei-shi-me-bi-xiu-5-ge-mo-kuai-an-zhao-14523-shun-xu-he-li-zhuan-zai</id>
