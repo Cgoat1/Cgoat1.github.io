@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="all,follow">
 <meta name="googlebot" content="index,follow,snippet,archive">
-<title>cgoat1&#39;s blog</title>
+<title>如何手动开平方 | cgoat1&#39;s blog</title>
 <link rel="shortcut icon" href="https://cgoat1.github.io//favicon.ico?v=1581427542738">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cgoat1.github.io//styles/main.css" type='text/css' media='all'>
@@ -18,7 +18,7 @@
 
 
 </head>
-<body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard">
+<body class="home blog ct-body standard">
 <div id="overflow-container" class="overflow-container">
   <a class="skip-content" href="#main">Skip to content</a>
   <header id="site-header" class="site-header" role="banner">
@@ -108,13 +108,89 @@
 
 </header>
 
+
   <div id="main" class="main" role="main">
-    <div class="main-content">
-      <div class="tags-container">
+    <div id="loop-container" class="loop-container">
+      <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
         
-          <a class="tag" href="https://cgoat1.github.io/tag/Vn2U28BhL">数学</a>
-        
+
+        <div class="entry-meta">
+          <span class="date">· 2020-02-11 ·</span> <span> / </span>
+          <span class="author">
+            <a href="https://cgoat1.github.io/" title="" rel="author"> Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></a>
+          </span>
+          
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'>如何手动开平方</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>小数开平方大家肯定都知道，只需背下一些整数的平方再进行逆运算就行。但一遇到一个大数，那可就头晕了，那么一个大数该如何开平方呢，请往下阅读</p>
+<h2 id="方法">方法</h2>
+<p>首先划分数字成组，不管是整数还是小数，均以小数点为分界线，向左和向右每两位数字划为一个单元（整数的话直接向左划分），直到不够两个数字为止。比如：</p>
+<p>12345，可以看做1,23,45；</p>
+<p>1234，可以看做12,34；</p>
+<p>0.123看一看做0.12,3；</p>
+<p>0.1234可以看做0.12,34。</p>
+<p>以7654.321为例，按照之前的划分可以看作76,54.32,1，首先计算76，9的平方是81，超过76了，不行；再看8的平方64，没有超76，差值等于12，参见下图。</p>
+<p>关键的一步到了，和除法一样下移数字，只是这里下移两位，移下来组成1254；而根结果现在只有一个8，取8<em>20=160，但160中的个位数字0先空着，计算16X</em>X刚不超过1254，这里算出是7，168<em>8超了，169</em>9更不行；算出差值为85。</p>
+<p>同理下移32，组成8532，这时的根结果为87，取87<em>20=1740，个位的0先空着，心算1745</em>5肯定会超，应该是1744*4=6976，计算出差值1556。</p>
+<p>这时候只剩下1了，而下移两位是必须的，所以补0，即下移10组成155610；这时的根结果为874，取874<em>20=17480，个位先空着，计算出17488</em>8正合适，计算出差值15706。</p>
+<p>如果还想计算下去，继续下移两个零，组成1570600，取8748<em>20=174960，这里估算还是8，即174968</em>8，以下具体步骤就省略了，这时的开方结果得到为87.488，或四舍五入为87.49。如果要求只保留一位小数，则结果就为87.5。当然若想求得更准确的位数，如法炮制计算下去就可以了。</p>
+
+            </article>
+          </div>
+          <div class='entry-meta-bottom'>
+            <div class="entry-categories">
+              <p>
+                <span>Categories</span>
+                
+                  
+                    
+                  <a href="https://cgoat1.github.io/tag/Vn2U28BhL" title="View all posts in 数学">数学</a>
+                    
+                    
+              </p>
+            </div>
+            <div class="entry-tags">
+              <p><span>Tags</span>
+              </p>
+            </div>
+          </div>
+          <div class="author-meta">
+            <div class="author">
+              <img alt='' src="https://cgoat1.github.io//images/avatar.png?v=1581427542738" class='avatar avatar-72 photo' height='72' width='72'>
+              <span>WRITTEN BY: &nbsp;&nbsp;&nbsp;<a href='https://cgoat1.github.io/'></a> </span>
+            </div>
+            <div class="bio">
+              <p></p>
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            </div>
+          </div>
+        </div>
+          
       </div>
+      <section id="comments" class="comments">
+        
+      </section>
     </div>
   </div>
   <footer id="site-footer" class="site-footer" role="contentinfo">
@@ -161,5 +237,4 @@
 </div>
 </body>
 </html>
-
 
