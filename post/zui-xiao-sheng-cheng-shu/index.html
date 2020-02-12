@@ -1,0 +1,874 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<title>最小生成树 | cgoat1&#39;s blog</title>
+<link rel="shortcut icon" href="https://cgoat1.github.io//favicon.ico?v=1581499602449">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cgoat1.github.io//styles/main.css" type='text/css' media='all'>
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+
+
+</head>
+<body class="home blog ct-body standard">
+<div id="overflow-container" class="overflow-container">
+  <a class="skip-content" href="#main">Skip to content</a>
+  <header id="site-header" class="site-header" role="banner">
+    <div class='top-navigation top-navigation-important'>
+        <div class='container'>
+            <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
+                <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fa fa-plus"></i></button>
+                <div class="menu">
+                    <ul id="menu-secondary-items" class="menu-secondary-items">
+                        
+                        
+                            
+                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
+                            <a href="https://cgoat1.github.io/tag/I4MDVs2KE">算法</a>
+                        </li>
+                            
+                        
+                            
+                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
+                            <a href="https://cgoat1.github.io/tag/-mcE0IgON">题解</a>
+                        </li>
+                            
+                        
+                            
+                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
+                            <a href="https://cgoat1.github.io/tag/ImnTa8Qa7">技巧</a>
+                        </li>
+                            
+                        
+                            
+                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
+                            <a href="https://cgoat1.github.io/tag/Vn2U28BhL">数学</a>
+                        </li>
+                            
+                        
+                            
+                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
+                            <a href="https://cgoat1.github.io/tag/RaVTICqod">规划</a>
+                        </li>
+                            
+                        
+                    </ul>
+                </div>
+            </div>
+            <ul class="social-media-icons">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="title-info" class="title-info">
+            <div id='site-title' class='site-title'>
+                <a href="https://cgoat1.github.io/">  cgoat1&#39;s blog </a>
+            </div>
+        </div>
+        <button id="toggle-navigation" class="toggle-navigation">
+            <i class="fa fa-bars"></i>
+        </button>
+        <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
+        <div id="menu-primary" class="menu-container menu-primary" role="navigation">
+            <p class="site-description">keep time,keep mind,keep humble</p>
+            <div class="menu">
+                <ul id="menu-primary-items" class="menu-primary-items">
+                     
+                        
+                            <li id="menu-item" class='menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item'>
+                                <a href="/">首页</a>
+                            </li>
+                        
+                    
+                        
+                            <li id="menu-item" class='menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item'>
+                                <a href="/archives">归档</a>
+                            </li>
+                        
+                    
+                        
+                            <li id="menu-item" class='menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item'>
+                                <a href="/tags">标签</a>
+                            </li>
+                        
+                    
+                        
+                            <li id="menu-item" class='menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item'>
+                                <a href="/post/about">关于</a>
+                            </li>
+                        
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</header>
+
+
+  <div id="main" class="main" role="main">
+    <div id="loop-container" class="loop-container">
+      <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+        
+
+        <div class="entry-meta">
+          <span class="date">· 2020-02-12 ·</span> <span> / </span>
+          <span class="author">
+            <a href="https://cgoat1.github.io/" title="" rel="author"> Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></a>
+          </span>
+          
+            <span class="category">
+                    <span> / </span>
+                    <a href="https://cgoat1.github.io/tag/I4MDVs2KE">算法</a>
+                </span>
+          
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'>最小生成树</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <h2 id="一-关于图的几个概念">一、关于图的几个概念</h2>
+<h4 id="1连通图">1.连通图：</h4>
+<p>在<strong>无向图</strong>中，若任意两个顶点都有路径相通，则称该无向图为连通图。</p>
+<h4 id="2强连通图">2.强连通图：</h4>
+<p>在<strong>有向图</strong>中，若任意两个顶点都有路径相通，则称该有向图为强连通图。</p>
+<h4 id="3权">3.权</h4>
+<p>在连通图中，若图的边具有一定的意义，每一条边都对应着一个价值，称为权</p>
+<h4 id="4连通网">4.连通网：</h4>
+<p>权代表着连接连个顶点的代价，称这种连通图叫做连通网。</p>
+<h4 id="5生成树">5.生成树：</h4>
+<p>一个连通图的生成树是指一个连通子图，它含有图中<strong>全部n个顶点</strong>，有且只有<strong>n-1条边</strong>（构成一个树）</p>
+<h4 id="6最小生成树">6.最小生成树：</h4>
+<p>在一幅图的所有生成树中，<strong>所有边的权和最小</strong>的生成树，称为最小生成树。<br>
+<img src="https://img-blog.csdnimg.cn/20200204102709380.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTI1NDY4Nw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></p>
+<h2 id="二-kruskal算法">二、Kruskal算法</h2>
+<h3 id="1算法原理">1.算法原理</h3>
+<p>此算法可以称为“加边法”，每一次选择一条代价最小的边，逐渐组成最小生成树<br>
+此算法的主要思路就是并查集和贪心<br>
+实现算法的步骤<br>
+（1）把图中的所有边按权值大小从小到大排序；<br>
+（2）按权值从小到大选择边（贪心思想），所选的边连接的两个顶点ui,viui,vi,应属于两颗不同的树，则成为最小生成树的一条边，并将这两颗树合并作为一颗树。<br>
+（3）重复(3),直到所有顶点都在一颗树内或者有n-1条边为止。</p>
+<figure data-type="image" tabindex="1"><img src="https://img-blog.csdnimg.cn/20200205090111710.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTI1NDY4Nw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<h3 id="2例题">2.例题</h3>
+<p>首先，我们来讲一个故事，听完这个故事，例题就学完了，算法就学精了<br>
+近年来，XX国城市道路建设和交通管理工作，在XX国家政府的支持下，取得了很大成绩。但是，随着XX国经济、社会的快速发展，道路交通的需求迅速增长，而道路交通供给却严重不足，XX国的一些城市交通拥堵严重，交通秩序较乱，交通事故不断上升。为改变上述状况，更好地适应XX国家经济、社会发展的要求，XX国政府决定在在XX国城市实施以提高道路交通管理水平为中心的“畅通工程”，大力解决道路交通的问题</p>
+<h4 id="例题1">例题1</h4>
+<h5 id="题目">题目</h5>
+<p><strong>Problem Description</strong><br>
+XX国某省调查乡村交通状况，得到的统计表中列出了任意两村庄间的距离。XX国省政府“畅通工程”的目标是使全省任何两个村庄间都可以实现公路交通（但不一定有直接的公路相连，只要能间接通过公路可达即可），并要求铺设的公路总长度为最小。请计算最小的公路总长度。<br>
+<strong>Input</strong><br>
+测试输入包含若干测试用例。每个测试用例的第1行给出村庄数目N ( &lt; 100 )；随后的N(N-1)/2行对应村庄间的距离，每行给出一对正整数，分别是两个村庄的编号，以及此两村庄间的距离。为简单起见，村庄从1到N编号。<br>
+当N为0时，输入结束，该用例不被处理。<br>
+<strong>Output</strong><br>
+对每个测试用例，在1行里输出最小的公路总长度。<br>
+<strong>Sample Input</strong><br>
+3<br>
+1 2 1<br>
+1 3 2<br>
+2 3 4<br>
+4<br>
+1 2 1<br>
+1 3 4<br>
+1 4 1<br>
+2 3 3<br>
+2 4 2<br>
+3 4 5<br>
+0<br>
+<strong>Sample Output</strong><br>
+3<br>
+5</p>
+<h5 id="代码实现">代码实现</h5>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;algorithm&gt; 
+using namespace std;
+int f[11000];
+struct node
+{
+	int a,b,m;
+}a[11000];
+bool cmp(node a,node b)
+{
+	if(a.m&lt;b.m)
+		return true;
+	return false;
+}
+int getf(int i)
+{
+	if(f[i]==i)
+		return i;
+	f[i]=getf(f[i]);
+	return f[i];
+}
+void un(int x,int y)
+{
+	int fx,fy;
+	fx=getf(x);
+	fy=getf(y);
+	if(fx!=fy)
+	{
+		f[fx]=fy;
+	}
+	return ;
+}
+int main()
+{
+	int n,i,j,k,ans=0;
+	while(cin&gt;&gt;n)
+	{
+		if(n==0)
+			break;
+		ans=0;
+		for(i=1;i&lt;=n;i++)
+			f[i]=i;
+		for(i=1;i&lt;=(n*(n-1))/2;i++)
+			cin&gt;&gt;a[i].a&gt;&gt;a[i].b&gt;&gt;a[i].m;
+		sort(a+1,a+(n*(n-1))/2+1,cmp);
+		j=1;
+		for(i=1;i&lt;=n-1;i++)
+		{
+			while(j&lt;=(n*(n-1))/2 &amp;&amp; getf(a[j].a)==getf(a[j].b))
+				j++;
+			un(a[j].a,a[j].b);
+			ans+=a[j].m;
+			//cout&lt;&lt;a[j].a&lt;&lt;&quot; &quot;&lt;&lt;a[j].b&lt;&lt;endl;
+		}
+		cout&lt;&lt;ans&lt;&lt;endl;
+	}
+	return 0;
+}
+</code></pre>
+<h4 id="例题2">例题2</h4>
+<h5 id="题目-2">题目</h5>
+<p><strong>Problem Description</strong><br>
+XX国某省省政府“畅通工程”的目标是使全省任何两个村庄间都可以实现公路交通（但不一定有直接的公路相连，只要能间接通过公路可达即可）。经过调查评估，得到的统计表中列出了有可能建设公路的若干条道路的成本。现请你编写程序，计算出全省畅通需要的最低成本。<br>
+<strong>Input</strong><br>
+测试输入包含若干测试用例。每个测试用例的第1行给出评估的道路条数 N、村庄数目M ( &lt; 100 )；随后的 N<br>
+行对应村庄间道路的成本，每行给出一对正整数，分别是两个村庄的编号，以及此两村庄间道路的成本（也是正整数）。为简单起见，村庄从1到M编号。当N为0时，全部输入结束，相应的结果不要输出。<br>
+<strong>Output</strong><br>
+对每个测试用例，在1行里输出全省畅通需要的最低成本。若统计数据不足以保证畅通，则输出“?”。<br>
+<strong>Sample Input</strong><br>
+3 3<br>
+1 2 1<br>
+1 3 2<br>
+2 3 4<br>
+1 3<br>
+2 3 2<br>
+0 100<br>
+<strong>Sample Output</strong><br>
+3<br>
+?</p>
+<h5 id="代码实现-2">代码实现</h5>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;algorithm&gt; 
+using namespace std;
+int f[11000];
+struct node
+{
+	int a,b,m;
+}a[11000];
+bool cmp(node a,node b)
+{
+	if(a.m&lt;b.m)
+		return true;
+	return false;
+}
+int getf(int i)
+{
+	if(f[i]==i)
+		return i;
+	f[i]=getf(f[i]);
+	return f[i];
+}
+void un(int x,int y)
+{
+	int fx,fy;
+	fx=getf(x);
+	fy=getf(y);
+	if(fx!=fy)
+	{
+		f[fx]=fy;
+	}
+	return ;
+}
+int main()
+{
+	int n,m,i,j,k,ans;
+	while(cin&gt;&gt;n&gt;&gt;m)
+	{
+		if(n==0)
+			break;
+		ans=0;
+		for(i=1;i&lt;=m+1;i++)
+			f[i]=i;
+		for(i=1;i&lt;=n;i++)
+			cin&gt;&gt;a[i].a&gt;&gt;a[i].b&gt;&gt;a[i].m;
+		sort(a+1,a+n+1,cmp);
+		j=1;
+		bool flag=0;
+		for(i=1;i&lt;=m-1;i++)
+		{
+			while(getf(a[j].a)==getf(a[j].b))
+			{
+				j++;
+			}
+			if(j&gt;n)
+			{
+				flag=1;
+				break;
+			}
+			un(a[j].a,a[j].b);
+			ans+=a[j].m;
+			//cout&lt;&lt;a[j].a&lt;&lt;&quot; &quot;&lt;&lt;a[j].b&lt;&lt;endl;
+		}
+		if(flag)
+			cout&lt;&lt;&quot;?&quot;&lt;&lt;endl;
+		else
+			cout&lt;&lt;ans&lt;&lt;endl;
+	}
+	return 0;
+}
+</code></pre>
+<h4 id="例题3">例题3</h4>
+<h5 id="题目-3">题目</h5>
+<p><strong>Problem Description</strong><br>
+XX国有一个著名的景点“百岛湖”，百岛湖的居民生活在不同的小岛中，当他们想去其他的小岛时都要通过划小船来实现。现在XX国政府决定大力发展百岛湖，发展首先要解决的问题当然是交通问题，政府决定实现百岛湖的全畅通！经过XX国考察小组对百岛湖的情况充分了解后，决定在符合条件的小岛间建上桥，所谓符合条件，就是2个小岛之间的距离不能小于10米，也不能大于1000米。当然，为了节省资金，只要求实现任意2个小岛之间有路通即可。其中桥的价格为 100元/米。<br>
+<strong>Input</strong><br>
+输入包括多组数据。输入首先包括一个整数T(T &lt;= 200)，代表有T组数据。<br>
+每组数据首先是一个整数C(C &lt;= 100),代表小岛的个数，接下来是C组坐标，代表每个小岛的坐标，这些坐标都是 0 &lt;= x, y &lt;= 1000的整数。<br>
+<strong>Output</strong><br>
+每组输入数据输出一行，代表建桥的最小花费，结果保留一位小数。如果无法实现工程以达到全部畅通，输出”oh!”.<br>
+<strong>Sample Input</strong><br>
+2<br>
+2<br>
+10 10<br>
+20 20<br>
+3<br>
+1 1<br>
+2 2<br>
+1000 1000<br>
+<strong>Sample Output</strong><br>
+1414.2<br>
+oh!</p>
+<h5 id="代码实现-3">代码实现</h5>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;cmath&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+int f[11000],g[10010][10010],x[10010],y[10010];
+struct node
+{
+	int a,b;
+	double m;
+}a[11000];
+bool cmp(node a,node b)
+{
+	if(a.m&lt;b.m)
+		return true;
+	return false;
+}
+int getf(int i)
+{
+	if(f[i]==i)
+		return i;
+	f[i]=getf(f[i]);
+	return f[i];
+}
+void un(int x,int y)
+{
+	int fx,fy;
+	fx=getf(x);
+	fy=getf(y);
+	if(fx!=fy)
+	{
+		f[fx]=fy;
+	}
+	return ;
+}
+int abs(int a)
+{
+	if(a&gt;0)
+		return a;
+	else
+		return -a;
+}
+int main()
+{
+	int c,i,j,k;
+	double ans;
+	int t;
+	cin&gt;&gt;t;
+	while(t&gt;0)
+	{
+		cin&gt;&gt;c;
+		ans=0;
+		for(i=1;i&lt;=c+1;i++)
+			f[i]=i;
+		k=1;
+		for(i=1;i&lt;=c;i++)
+		{
+			cin&gt;&gt;x[i]&gt;&gt;y[i];
+			for(j=1;j&lt;i;j++)
+			{
+				double l=sqrt(abs(x[i]-x[j])*abs(x[i]-x[j])+abs(y[i]-y[j])*abs(y[i]-y[j]));
+				if(l&lt;10 || l&gt;1000)
+					continue;
+				a[k].a=i;
+				a[k].b=j;
+				a[k].m=l;
+				k++;
+			}
+		}
+		k--;
+		sort(a+1,a+k+1,cmp);
+		j=1;
+		bool flag=0;
+		for(i=1;i&lt;=c-1;i++)
+		{
+			while(j&lt;=k &amp;&amp; getf(a[j].a)==getf(a[j].b))
+			{
+				j++;
+			}
+			if(j&gt;k)
+			{
+				flag=1;
+				break;
+			}
+			un(a[j].a,a[j].b);
+			ans+=a[j].m*100.0;
+			//cout&lt;&lt;a[j].a&lt;&lt;&quot; &quot;&lt;&lt;a[j].b&lt;&lt;endl;
+		}
+		if(flag)
+			cout&lt;&lt;&quot;oh!&quot;&lt;&lt;endl;
+		else
+			printf(&quot;%.1f\n&quot;,ans);
+		t--;
+	}
+	return 0;
+}
+</code></pre>
+<h4 id="例题4">例题4</h4>
+<h5 id="题目-4">题目</h5>
+<p><strong>Problem Description</strong><br>
+XX星有许多城市，城市之间通过一种奇怪的高速公路SARS(Super Air Roam Structure---超级空中漫游结构）进行交流，每条SARS都对行驶在上面的Flycar限制了固定的Speed，同时XX星人对 Flycar的“舒适度”有特殊要求，即乘坐过程中最高速度与最低速度的差越小乘坐越舒服 ,(理解为SARS的限速要求，flycar必须瞬间提速/降速，痛苦呀 ),<br>
+但XX星人对时间却没那么多要求。要你找出一条城市间的最舒适的路径。(SARS是双向的）。<br>
+<strong>Input</strong><br>
+输入包括多个测试实例，每个实例包括：<br>
+第一行有2个正整数n (1&lt;n&lt;=200)和m (m&lt;=1000),表示有N个城市和M条SARS。<br>
+接下来的行是三个正整数StartCity,EndCity,speed,表示从表面上看StartCity到EndCity,限速为speedSARS。speed&lt;=1000000<br>
+然后是一个正整数Q（Q&lt;11),表示寻路的个数。<br>
+接下来Q行每行有2个正整数Start,End, 表示寻路的起终点。<br>
+<strong>Output</strong><br>
+每个寻路要求打印一行，仅输出一个非负整数表示最佳路线的舒适度最高速与最低速的差。如果起点和终点不能到达，那么输出-1。<br>
+<strong>Sample Input</strong><br>
+4 4<br>
+1 2 2<br>
+2 3 4<br>
+1 4 1<br>
+3 4 2<br>
+2<br>
+1 3<br>
+1 2<br>
+<strong>Sample Output</strong><br>
+1<br>
+0</p>
+<h5 id="代码实现-4">代码实现</h5>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;algorithm&gt; 
+using namespace std;
+int f[1010];
+struct node
+{
+	int a,b,m;
+}a[1010];
+bool cmp(node a,node b)
+{
+	if(a.m&lt;b.m)
+		return true;
+	return false;
+}
+int getf(int i)
+{
+	if(f[i]==i)
+		return i;
+	f[i]=getf(f[i]);
+	return f[i];
+}
+void un(int x,int y)
+{
+	int fx,fy;
+	fx=getf(x);
+	fy=getf(y);
+	if(fx!=fy)
+	{
+		f[fx]=fy;
+	}
+	return ;
+}
+int main()
+{
+	int n,m,q,i,j,k,s,e,ans=0;
+	while(cin&gt;&gt;n&gt;&gt;m)
+	{
+		ans=0;
+		for(i=1;i&lt;=m;i++)
+			cin&gt;&gt;a[i].a&gt;&gt;a[i].b&gt;&gt;a[i].m;
+		sort(a+1,a+m+1,cmp);
+		cin&gt;&gt;q;
+		for(k=1;k&lt;=q;k++)
+		{
+			ans=1000010;
+			bool flag=0;
+			cin&gt;&gt;s&gt;&gt;e;
+			for(i=1;i&lt;=m;i++)
+			{
+				for(j=1;j&lt;=n;j++)
+					f[j]=j;
+				for(j=i;j&lt;=m;j++)
+				{
+					if(getf(a[j].a)!=getf(a[j].b))
+						un(a[j].a,a[j].b);
+					else
+						continue;
+					if(getf(s)==getf(e))
+					{
+						ans=min(ans,a[j].m-a[i].m);
+						flag=1;
+						break;
+					}
+				}
+			}
+			if(flag==0)
+				cout&lt;&lt;&quot;-1&quot;&lt;&lt;endl;
+			else
+				cout&lt;&lt;ans&lt;&lt;endl;
+		}
+	}
+	return 0;
+}
+</code></pre>
+<h2 id="三-prim算法">三、Prim算法</h2>
+<h3 id="1算法原理-2">1.算法原理</h3>
+<p>此算法可以称为“加点法”，每次选择对应的点其中权最小的边，加入到最小生成树中。因为最小生成树中的顶点包括所有在连通网中的顶点，所以算法可以从任意一个顶点开始，逐渐覆盖整个连通网的所有顶点。<br>
+初始有一个集合u代表了哪一个顶点在最小生成树中，选取任意一个顶点a，令u={a}<br>
+在集合u中的点和不在集合u中的点能够组成的边中，选择一条权最小的边，加入到最小生成树中，并把这条边所对应的点并入到集合u中。此时，由于不断向集合u中加点，所以最小代价边必须同步更新；需要建立一个辅助数组d,用来维护不在集合u中每个顶点与集合u中最小代价边信息<br>
+重复上述步骤，直到最小生成树有n-1条边或者n个顶点为止。<br>
+<img src="https://img-blog.csdnimg.cn/2020020509550321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTI1NDY4Nw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></p>
+<h3 id="2例题-2">2.例题</h3>
+<h4 id="例题1此处用prim算法">例题1（此处用Prim算法）</h4>
+<h5 id="题目-5">题目</h5>
+<p><strong>Problem Description</strong><br>
+XX国有一个著名的景点“百岛湖”，百岛湖的居民生活在不同的小岛中，当他们想去其他的小岛时都要通过划小船来实现。现在XX国政府决定大力发展百岛湖，发展首先要解决的问题当然是交通问题，政府决定实现百岛湖的全畅通！经过XX国考察小组对百岛湖的情况充分了解后，决定在符合条件的小岛间建上桥，所谓符合条件，就是2个小岛之间的距离不能小于10米，也不能大于1000米。当然，为了节省资金，只要求实现任意2个小岛之间有路通即可。其中桥的价格为 100元/米。<br>
+<strong>Input</strong><br>
+输入包括多组数据。输入首先包括一个整数T(T &lt;= 200)，代表有T组数据。<br>
+每组数据首先是一个整数C(C &lt;= 100),代表小岛的个数，接下来是C组坐标，代表每个小岛的坐标，这些坐标都是 0 &lt;= x, y &lt;= 1000的整数。<br>
+<strong>Output</strong><br>
+每组输入数据输出一行，代表建桥的最小花费，结果保留一位小数。如果无法实现工程以达到全部畅通，输出”oh!”.<br>
+<strong>Sample Input</strong><br>
+2<br>
+2<br>
+10 10<br>
+20 20<br>
+3<br>
+1 1<br>
+2 2<br>
+1000 1000<br>
+<strong>Sample Output</strong><br>
+1414.2<br>
+oh!</p>
+<h5 id="代码实现-5">代码实现</h5>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n;
+bool in[105];
+double dist[105],x[105],y[105],ans;
+double d(int a,int b)
+{
+	double dx=x[a]-x[b];
+	double dy=y[a]-y[b];
+	return sqrt(dx*dx+dy*dy);
+}
+bool prim()
+{
+	int ed;
+	double minn;
+	in[1]=true;
+	for(int i=2;i&lt;=n;i++)
+	{
+		dist[i]=d(1,i);
+		if(dist[i]&lt;10||dist[i]&gt;1000)
+			dist[i]=1005;
+	}
+	for(int i=2;i&lt;=n;i++)
+	{
+		minn=1005;
+		for(int j=2;j&lt;=n;j++)
+			if(!in[j]&amp;&amp;dist[j]&lt;minn&amp;&amp;dist[j]&gt;=10&amp;&amp;dist[j]&lt;=1000)
+			{
+				minn=dist[j];
+				ed=j;
+			}
+		if(minn==1005)
+			return false;
+		in[ed]=true;
+		ans+=minn*100;
+		for(int j=2;j&lt;=n;j++)
+			if(d(ed,j)&gt;=10)
+				dist[j]=min(dist[j],d(ed,j));
+	}
+	return true;
+}
+int main()
+{
+	int t;
+	cin&gt;&gt;t;
+	while(t--)
+	{
+		cin&gt;&gt;n;
+		ans=0;
+		memset(in,false,sizeof(in));
+		for(int i=1;i&lt;=n;i++)
+			cin&gt;&gt;x[i]&gt;&gt;y[i];
+		if(prim())
+			printf(&quot;%.1f&quot;,ans);
+		else
+			cout&lt;&lt;&quot;oh!&quot;&lt;&lt;endl;
+	}
+    return 0;  
+}
+</code></pre>
+<h4 id="例题2-2">例题2</h4>
+<h5 id="题目-6">题目</h5>
+<p><img src="https://img-blog.csdnimg.cn/20200205094034394.gif" alt="在这里插入图片描述" loading="lazy"><br>
+<strong>Problem Description</strong></p>
+<p>The Head Elder of the tropical island of Lagrishan has a problem. A burst of foreign aid money was spent on extra roads between villages some years ago. But the jungle overtakes roads relentlessly, so the large road network is too expensive to maintain. The Council of Elders must choose to stop maintaining some roads. The map above on the left shows all the roads in use now and the cost in aacms per month to maintain them. Of course there needs to be some way to get between all the villages on maintained roads, even if the route is not as short as before. The Chief Elder would like to tell the Council of Elders what would be the smallest amount they could spend in aacms per month to maintain roads that would connect all the villages. The villages are labeled A through I in the maps above. The map on the right shows the roads that could be maintained most cheaply, for 216 aacms per month. Your task is to write a program that will solve such problems.</p>
+<p>The input consists of one to 100 data sets, followed by a final line containing only 0. Each data set starts with a line containing only a number n, which is the number of villages, 1 &lt; n &lt; 27, and the villages are labeled with the first n letters of the alphabet, capitalized. Each data set is completed with n-1 lines that start with village labels in alphabetical order. There is no line for the last village. Each line for a village starts with the village label followed by a number, k, of roads from this village to villages with labels later in the alphabet. If k is greater than 0, the line continues with data for each of the k roads. The data for each road is the village label for the other end of the road followed by the monthly maintenance cost in aacms for the road. Maintenance costs will be positive integers less than 100. All data fields in the row are separated by single blanks. The road network will always allow travel between all the villages. The network will never have more than 75 roads. No village will have more than 15 roads going to other villages (before or after in the alphabet). In the sample input below, the first data set goes with the map above.</p>
+<p>The output is one integer per line for each data set: the minimum cost in aacms per month to maintain a road system that connect all the villages. Caution: A brute force solution that examines every possible set of roads will not finish within the one minute time limit.<br>
+<strong>Sample Input</strong><br>
+9<br>
+A 2 B 12 I 25<br>
+B 3 C 10 H 40 I 8<br>
+C 2 D 18 G 55<br>
+D 1 E 44<br>
+E 2 F 60 G 38<br>
+F 0<br>
+G 1 H 35<br>
+H 1 I 35<br>
+3<br>
+A 2 B 10 C 40<br>
+B 1 C 20<br>
+0<br>
+<strong>Sample Output</strong><br>
+216<br>
+30</p>
+<h5 id="代码实现-6">代码实现</h5>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int g[28][28],d[28];
+bool u[28];
+int main()
+{
+	int n,i,j;
+	while(cin&gt;&gt;n)
+	{
+		if(n==0)
+			break;
+		memset(u,false,sizeof(u));
+		memset(g,0,sizeof(g));
+		memset(d,0,sizeof(d));
+		int ans=0;
+		for(i=1;i&lt;n;i++)
+		{
+			char c1,c2;
+			int k,m;
+			cin&gt;&gt;c1&gt;&gt;k;
+			for(j=1;j&lt;=k;j++)
+			{
+				cin&gt;&gt;c2&gt;&gt;m;
+				g[c1-'A'+1][c2-'A'+1]=m;
+				g[c2-'A'+1][c1-'A'+1]=m;	
+			}
+		}
+		u[1]=true;
+		for(i=2;i&lt;=n;i++)
+		{
+			if(g[1][i]!=0)
+				d[i]=g[1][i];
+			else
+				d[i]=105;
+		}
+		for(i=1;i&lt;n;i++)
+		{
+			int minn=105,id=0;
+			for(j=1;j&lt;=n;j++)
+			{
+				if(u[j]==0 &amp;&amp; d[j]&lt;minn)
+				{
+					minn=d[j];
+					id=j;
+				}
+			}
+			ans+=minn;
+			u[id]=true;
+			for(int j=2;j&lt;=n;j++)
+			{
+				if(g[id][j]!=0)
+					d[j]=min(d[j],g[id][j]);
+			}
+		}
+		cout&lt;&lt;ans&lt;&lt;endl;
+	}
+	return 0;
+}
+</code></pre>
+
+            </article>
+          </div>
+          <div class='entry-meta-bottom'>
+            <div class="entry-categories">
+              <p>
+                <span>Categories</span>
+                
+                  
+                    
+                  <a href="https://cgoat1.github.io/tag/I4MDVs2KE" title="View all posts in 算法">算法</a>
+                    
+                    
+                    
+                  <a href="https://cgoat1.github.io/tag/-mcE0IgON" title="View all posts in 题解">题解</a>
+                    
+                    
+                    
+                  <a href="https://cgoat1.github.io/tag/ImnTa8Qa7" title="View all posts in 技巧">技巧</a>
+                    
+                    
+                    
+                  <a href="https://cgoat1.github.io/tag/Vn2U28BhL" title="View all posts in 数学">数学</a>
+                    
+                    
+                    
+                  <a href="https://cgoat1.github.io/tag/RaVTICqod" title="View all posts in 规划">规划</a>
+                    
+                    
+              </p>
+            </div>
+            <div class="entry-tags">
+              <p><span>Tags</span>
+              </p>
+            </div>
+          </div>
+          <div class="author-meta">
+            <div class="author">
+              <img alt='' src="https://cgoat1.github.io//images/avatar.png?v=1581499602449" class='avatar avatar-72 photo' height='72' width='72'>
+              <span>WRITTEN BY: &nbsp;&nbsp;&nbsp;<a href='https://cgoat1.github.io/'>Cgoat1</a> </span>
+            </div>
+            <div class="bio">
+              <p></p>
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            </div>
+          </div>
+        </div>
+          
+            <nav class="navigation pagination" role="navigation">
+              <h2 class="screen-reader-text">Posts navigation</h2>
+              <div class="nav-links">
+                <a class="next page-numbers" href="https://cgoat1.github.io/post/luo-gu-p1016-lu-xing-jia-de-yu-suan">下一篇->洛谷P1016 旅行家的预算</a>
+              </div>
+            </nav>
+          
+      </div>
+      <section id="comments" class="comments">
+        
+      </section>
+    </div>
+  </div>
+  <footer id="site-footer" class="site-footer" role="contentinfo">
+    <h1>
+        <a href="https://cgoat1.github.io/"> cgoat1&#39;s blog </a>
+    </h1>
+    <p class="site-description">keep time,keep mind,keep humble</p>
+    <div id="menu-footer" class="menu-container menu-footer" role="navigation">
+        <div class="menu">
+            <ul id="menu-footer-items" class="menu-footer-items">
+            </ul>
+        </div>
+    </div>
+    <ul class="social-media-icons">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </ul>
+    <div class="design-credit">
+        <p>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></p>
+    </div>
+</footer>
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+<script src="https://cgoat1.github.io//media/scripts/lib/jquery.min.js"></script>
+<script src="https://cgoat1.github.io//media/scripts/lib/jquerymigrate.js"></script>
+<script src="https://cgoat1.github.io//media/scripts/lib/production.min.js"></script>
+
+</div>
+</body>
+</html>
+

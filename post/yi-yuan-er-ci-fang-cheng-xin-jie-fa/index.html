@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="all,follow">
 <meta name="googlebot" content="index,follow,snippet,archive">
-<title>学习并查集回顾 | cgoat1&#39;s blog</title>
+<title>一元二次方程新解法 | cgoat1&#39;s blog</title>
 <link rel="shortcut icon" href="https://cgoat1.github.io//favicon.ico?v=1581499602449">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cgoat1.github.io//styles/main.css" type='text/css' media='all'>
@@ -139,172 +139,29 @@
         
 
         <div class="entry-meta">
-          <span class="date">· 2020-02-11 ·</span> <span> / </span>
+          <span class="date">· 2020-02-12 ·</span> <span> / </span>
           <span class="author">
             <a href="https://cgoat1.github.io/" title="" rel="author"> Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></a>
           </span>
           
             <span class="category">
                     <span> / </span>
-                    <a href="https://cgoat1.github.io/tag/I4MDVs2KE">算法</a>
+                    <a href="https://cgoat1.github.io/tag/ImnTa8Qa7">技巧</a>
+                </span>
+          
+            <span class="category">
+                    <span> / </span>
+                    <a href="https://cgoat1.github.io/tag/Vn2U28BhL">数学</a>
                 </span>
           
         </div>
         <div class='entry-header'>
-          <h1 class='entry-title'>学习并查集回顾</h1>
+          <h1 class='entry-title'>一元二次方程新解法</h1>
         </div>
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <h3 id="1例题hdu1232-畅通工程">1.例题：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1232">hdu1232 畅通工程</a></h3>
-<h4 id="1题目搬运">(1)题目搬运</h4>
-<h5 id="题目背景">题目背景</h5>
-<p>某省调查城镇交通状况，得到现有城镇道路统计表，表中列出了每条道路直接连通的城镇。省政府“畅通工程”的目标是使全省任何两个城镇间都可以实现交通（但不一定有直接的道路相连，只要互相间接通过道路可达即可）。问最少还需要建设多少条道路？</p>
-<h5 id="输入格式">输入格式</h5>
-<p>测试输入包含若干测试用例。每个测试用例的第1行给出两个正整数，分别是城镇数目N ( &lt; 1000 )和道路数目M；随后的M行对应M条道路，每行给出一对正整数，分别是该条道路直接连通的两个城镇的编号。为简单起见，城镇从1到N编号。<br>
-注意:两个城市之间可以有多条道路相通,也就是说<br>
-3 3<br>
-1 2<br>
-1 2<br>
-2 1<br>
-这种输入也是合法的<br>
-当N为0时，输入结束，该用例不被处理。</p>
-<h5 id="输出格式">输出格式</h5>
-<p>对每个测试用例，在1行里输出最少还需要建设的道路数目。</p>
-<h5 id="输入样例">输入样例</h5>
-<p>4 2<br>
-1 3<br>
-4 3<br>
-3 3<br>
-1 2<br>
-1 3<br>
-2 3<br>
-5 2<br>
-1 2<br>
-3 5<br>
-999 0<br>
-0</p>
-<h5 id="输出样例">输出样例</h5>
-<p>1<br>
-0<br>
-2<br>
-998</p>
-<h4 id="2题目分析">(2)题目分析</h4>
-<p>由于题目本身给的输入样例太水了并且是多组数据输入，不好分析，所以我们先自己编一个样例，下面是我自己编的一个样例：<br>
-输入<br>
-10 7<br>
-1 2<br>
-2 4<br>
-2 3<br>
-7 8<br>
-5 8<br>
-2 9<br>
-6 10<br>
-输出<br>
-2<br>
-依照这个样例我们可以画出如下图所示的一幅图，其中每个城市用一个编号来表示，每条边表示这两个城市之间有一条路径<br>
-<img src="https://img-blog.csdnimg.cn/20200119235803180.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTI1NDY4Nw==,size_16,color_FFFFFF,t_70" alt="图2-1-2-1" loading="lazy"><br>
-接下来我们来分析一下这个图，从这个图中我们可以看到有三个城市堆，分别是1、2、3、4、9城市一堆，5、7、8城市一堆和6、10城市一堆，这三个堆互不相连，所以这道题中要求的最少增加的路径数肯定等于把这三堆连起来所用的最少增加的路径数，同时也等于城市堆数减一<br>
-所以，问题转化为了求城市堆的个数，但是如何确定城市的堆数呢，我们可以在城市内部建立联系，我们可以让每个城市都有一个属于他自己的一个祖先，合并的时候把他们的祖先合并，然后看看有几个城市没有祖先了或者说他自己就是他自己的祖先，那么这些城市堆数加1</p>
-<h4 id="3代码实现">(3)代码实现</h4>
-<h5 id="1总体代码">1.总体代码</h5>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-using namespace std;
-int f[1010];
-int n,m,i,j,p,q;
-int getf(int i)
-{
-	if(f[i]==i)
-		return i;
-	f[i]=getf(f[i]);
-	return f[i];
-}
-void un(int x,int y)
-{
-	int fx,fy;
-	fx=getf(x);
-	fy=getf(y);
-	if(fx!=fy)
-		f[fy]=fx;
-	return ;
-}
-int main()
-{
-	while(cin&gt;&gt;n &amp;&amp; n!=0)
-	{
-		int ans=0;
-		cin&gt;&gt;m;
-		for(i=1;i&lt;=n;i++)
-			f[i]=i;
-		for(i=1;i&lt;=m;i++)
-		{
-			cin&gt;&gt;p&gt;&gt;q;
-			un(p,q);
-		}
-		for(i=1;i&lt;=n;i++)
-			if(f[i]==i)
-				ans++;
-		cout&lt;&lt;ans-1&lt;&lt;endl;
-	}
-	return 0;
-}
-</code></pre>
-<h5 id="2分步讲解">2.分步讲解</h5>
-<h6 id="变量">变量</h6>
-<pre><code class="language-cpp">int f[1010]; //储存第i个城市的祖先是f[i]
-int n,m,i,j,p,q;
-</code></pre>
-<h6 id="主体代码">主体代码</h6>
-<pre><code class="language-cpp">int main()
-{
-	while(cin&gt;&gt;n &amp;&amp; n!=0)
-	{
-		int ans=0;
-		cin&gt;&gt;m;
-		for(i=1;i&lt;=n;i++)
-			f[i]=i; //初始化每个城市的祖先都是自己
-		for(i=1;i&lt;=m;i++)
-		{
-			cin&gt;&gt;p&gt;&gt;q;
-			un(p,q); //合并两个城市p，q
-		}
-		for(i=1;i&lt;=n;i++)
-			if(f[i]==i)
-				ans++; //如果这个城市的祖先是他自己，那么城市堆数加1
-		cout&lt;&lt;ans-1&lt;&lt;endl;
-	}
-	return 0;
-}
-</code></pre>
-<h6 id="查集">查集</h6>
-<p>找祖先的过程</p>
-<pre><code class="language-cpp">int getf(int i)
-{
-	if(f[i]==i) //如果他自己就是他的祖先，那么返回他
-		return i;
-	return getf(f[i]); //如果不是，继续一层层往下找
-}
-</code></pre>
-<p>但是我们还会发现，每一次都从头往后找，有点太麻烦了，于是我们可以每次存储下来他们最终的祖先，这就叫做路径压缩</p>
-<pre><code class="language-cpp">int getf(int i)
-{
-	if(f[i]==i) 
-		return i;
-	f[i]=getf(f[i]); //路径压缩
-	return f[i];
-}
-</code></pre>
-<h6 id="并集">并集</h6>
-<pre><code class="language-cpp">void un(int x,int y)
-{
-	int fx,fy;
-	fx=getf(x); //找祖先
-	fy=getf(y);
-	if(fx!=fy)
-		f[fy]=fx; //把他们祖先合并
-	return ;
-}
-</code></pre>
+              <p>近日，美国奥数总教练、卡耐基梅隆数学大学教授罗博深表示，刚刚发现了一种最新的二次方程求根公式推导技巧。为求解一般二次方程式提供了一种高效自然的方法。该推导在计算上是轻量级的，大大缩减了求根公式的复杂性，并且在概念上是自然的。</p>
 
             </article>
           </div>
@@ -368,13 +225,6 @@ int n,m,i,j,p,q;
             </div>
           </div>
         </div>
-          
-            <nav class="navigation pagination" role="navigation">
-              <h2 class="screen-reader-text">Posts navigation</h2>
-              <div class="nav-links">
-                <a class="next page-numbers" href="https://cgoat1.github.io/post/ru-he-shou-dong-kai-ping-fang">下一篇->如何手动开平方</a>
-              </div>
-            </nav>
           
       </div>
       <section id="comments" class="comments">
