@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cgoat1.github.io/</id>
     <title>cgoat1&apos;s blog</title>
-    <updated>2020-02-12T09:26:46.664Z</updated>
+    <updated>2020-02-12T12:22:12.937Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cgoat1.github.io/"/>
     <link rel="self" href="https://cgoat1.github.io/atom.xml"/>
@@ -10,6 +10,246 @@
     <logo>https://cgoat1.github.io/images/avatar.png</logo>
     <icon>https://cgoat1.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, cgoat1&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[洛谷 P1548棋盘问题]]></title>
+        <id>https://cgoat1.github.io/post/luo-gu-p1548-qi-pan-wen-ti</id>
+        <link href="https://cgoat1.github.io/post/luo-gu-p1548-qi-pan-wen-ti">
+        </link>
+        <updated>2020-02-12T12:21:06.000Z</updated>
+        <content type="html"><![CDATA[<p>这题由于范围较小(1≤N≤100,1≤M≤100)</p>
+<p>可以使用暴力AC</p>
+<p>代码如下：</p>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int main()
+{
+	int n,m,i,j,csquare=0,crectangle=0; //csquare 统计正方形个数  crectangle 统计长方形个数 
+	cin&gt;&gt;n&gt;&gt;m; //输入 
+	for(i=1;i&lt;=n;i++) //长  可以取任意在n以内的一个数   
+	for(j=1;j&lt;=m;j++) //宽  同上
+	{
+		if(i==j) //如果长等于宽   代表是正方形 
+			csquare+=(n-i+1)*(m-j+1); 
+		else
+			crectangle+=(n-i+1)*(m-j+1); //由于第二遍会重复算长方形，所以不用担心需要乘以二 
+		/*
+		推导过程：
+		总可能性=小长方形的长在大长方形的长中可能性 ×小长方形的宽在大长方形的宽中可能性 
+		接下来只用求 长方形的长在大长方形的长中可能性 就可以啦
+		我是这样推的： 
+			我们先把长方形看成长变成1的小长方形，这个小长方形每次都会往前推一格，直到尽头
+			所以，我们只用看它推了多少格就行了
+			假设推了n格
+			n=大长方形长-小长方形长+1
+		然后就没有了...
+		*/ 
+	} 
+	cout&lt;&lt;csquare&lt;&lt;&quot; &quot;&lt;&lt;crectangle&lt;&lt;endl;
+ 	return 0; //完美结束 q(≧▽≦q) 
+}
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[洛谷 P1115 最大子段和]]></title>
+        <id>https://cgoat1.github.io/post/luo-gu-p1115-zui-da-zi-duan-he</id>
+        <link href="https://cgoat1.github.io/post/luo-gu-p1115-zui-da-zi-duan-he">
+        </link>
+        <updated>2020-02-12T12:20:02.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="思路分治">思路：分治</h1>
+<h1 id="实现方法递归">实现方法：递归</h1>
+<h2 id="一-如何实现">一、如何实现</h2>
+<h3 id="1每次从中间切一刀">1.每次从中间切一刀</h3>
+<h3 id="2找出左边的最大子段">2.找出左边的最大子段</h3>
+<p>如图</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.luogu.com.cn/upload/pic/66227.png" alt="" loading="lazy"></figure>
+<p>递归蓝色区域</p>
+<h3 id="3找出右边的最大子段与找出左边的最大子段相似">3.找出右边的最大子段（与找出左边的最大子段相似）</h3>
+<p>如图</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.luogu.com.cn/upload/pic/66228.png" alt="" loading="lazy"></figure>
+<p>递归蓝色区域</p>
+<h3 id="4找出中间的最大子段">4.找出中间的最大子段</h3>
+<p>所谓中间就是图中蓝色区域</p>
+<figure data-type="image" tabindex="3"><img src="https://cdn.luogu.com.cn/upload/pic/66231.png" alt="" loading="lazy"></figure>
+<h3 id="重点实现">重点实现</h3>
+<h4 id="1如何实现">1）如何实现</h4>
+<figure data-type="image" tabindex="4"><img src="https://cdn.luogu.com.cn/upload/pic/66254.png" alt="" loading="lazy"></figure>
+<p>如图所示,蓝色区域等于红色区域加上绿色区域</p>
+<p>所以就可以先算出红色区域的最大子段在算出绿色区域的最大子段最后相加就行了</p>
+<h4 id="2代码实现">2）代码实现</h4>
+<p>主要代码</p>
+<pre><code>long long i,left_sum=0,l_max=a[mid],right_sum=0,r_max=a[mid+1];
+for(i=mid;i&gt;=left;i--) 
+{
+	left_sum+=a[i];
+	if(left_sum&gt;l_max)
+		l_max=left_sum;
+}
+for(i=mid+1;i&lt;=right;i++)
+{
+	right_sum+=a[i];
+	if(right_sum&gt;r_max)
+		r_max=right_sum;
+}
+</code></pre>
+<h2 id="二-注意事项">二、注意事项</h2>
+<h2 id="以下都是本人认为容易出错的地方">以下都是本人认为容易出错的地方</h2>
+<h3 id="1long-long-的使用地方">1.long long 的使用地方</h3>
+<p>在完整代码中,我命名变量通常都是long long类型的,这主要是因为不使用会爆掉,我们可以简单估一下：</p>
+<p>int范围：-2147483648 ~ +2147483647</p>
+<p>long long范围：-9223372036854775808 ~+9223372036854775807</p>
+<p>题目中N≤200000,假设每个数10000多的话,数组累加起来就会爆掉int类型,所以还是用long long妥当</p>
+<h3 id="2数组切记要开大">2.数组切记要开大</h3>
+<p>重要的事情说三遍：数组要开大！数组要开大！数组要开大！</p>
+<p>只要是数组有超过10000个元素的话，一般都要开在外面，而且一定要开大一点，否则就会爆掉。此题给的是N≤200000，所以我们就应该开200005的数组</p>
+<h2 id="三-实现代码">三、实现代码</h2>
+<p>完整代码如下：</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;//万能头不解释 
+using namespace std;
+int a[200005];//开个足够大的数组 
+long long max3(long long a,long long b,long long c) //这个函数可有可无,只是为了方(mei)便(guan)
+{
+	return max(a,max(b,c)); //判断三个数中的最大的数 
+} 
+//-------------------以下为主要代码 
+long long f(long long left,long long right) //一直返回最大值 
+{
+	long long mid=(left+right)/2; //运用了分治的思想 
+	if(left==right) //终止条件 
+		return a[left]; // 切到只剩一个数时 返回a[left]或a[right]随意(自己是最大值) 
+	long long left_max; //-----------------左最大值 
+	left_max=f(left,mid); //递归 
+	long long right_max; //-----------------右最大值 
+	right_max=f(mid+1,right); //递归(注意是mid+1) 
+	long long i,left_sum=0,l_max=a[mid],right_sum=0,r_max=a[mid+1]; //-----------------中最大值 
+	for(i=mid;i&gt;=left;i--) //求左边最大值(注意和之前不同了,这是从中间向两边找最大值) 
+	{
+		left_sum+=a[i]; //逐个累加 
+		if(left_sum&gt;l_max) //如果sum&gt;max就让max=sum 
+			l_max=left_sum;
+	}
+	for(i=mid+1;i&lt;=right;i++) //求右边最大值
+	{
+		right_sum+=a[i]; //同上 
+		if(right_sum&gt;r_max)
+			r_max=right_sum;
+	}
+	long long MAX=max3(left_max,right_max,l_max+r_max); //因为最大值要么在左边,要么在右边,要么在中间,所以去三者最大值然后返回就行了  
+	return MAX; //返回最大值 
+}
+int main() //主函数 
+{
+	long long n,i;
+	cin&gt;&gt;n;
+	for(i=1;i&lt;=n;i++) //输入 
+		cin&gt;&gt;a[i];
+	cout&lt;&lt;f(1,n)&lt;&lt;endl; //输入数据然后输出 
+	return 0;
+ }
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[洛谷 P1803 【凌乱的yyy / 线段覆盖】]]></title>
+        <id>https://cgoat1.github.io/post/luo-gu-p1803-ling-luan-de-yyy-xian-duan-fu-gai</id>
+        <link href="https://cgoat1.github.io/post/luo-gu-p1803-ling-luan-de-yyy-xian-duan-fu-gai">
+        </link>
+        <updated>2020-02-12T12:18:31.000Z</updated>
+        <content type="html"><![CDATA[<p>这道题是一道贪心的题<br>
+如果我们要看贪心策略是否正确，我们必须先要举不出反例或者证明这是绝对正确</p>
+<h4 id="几种常见错误的贪心策略本蒟蒻一开始的策略">几种常见错误的贪心策略（本蒟蒻一开始的策略）：</h4>
+<h4 id="1最早开始">1.最早开始</h4>
+<p>按照越早开始的排序，这个十分容易举出反例</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.luogu.com.cn/upload/pic/68638.png" alt="" loading="lazy"></figure>
+<p>假如这种规则是对的，那么就会选择蓝色的线段，但最多的形况不是这样，所以是错误的</p>
+<h4 id="2最短线段">2.最短线段</h4>
+<p>按照线段长度的排序，这个也十分容易举出反例</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.luogu.com.cn/upload/pic/68636.png" alt="" loading="lazy"></figure>
+<p>假如这种规则是对的，那么就会选择蓝色的线段，但最多的形况不是这样，所以是错误的</p>
+<h4 id="3冲突最少">3.冲突最少</h4>
+<p>按照线段冲突的个数的排序，这个挺难举出反例（也挺难想到的）</p>
+<figure data-type="image" tabindex="3"><img src="https://cdn.luogu.com.cn/upload/pic/68643.png" alt="" loading="lazy"></figure>
+<p>假如这种规则是对的，那么就会选择中间蓝色的线段，但最多的形况是选红色的线段，所以这个也是错误的</p>
+<p>接下来讲一下正确的写法：最早结束</p>
+<p>证明:排序后当你选了一个线段后,下一个开始位置一定大于等于现在线段的终止位置，所以终止位置肯定越早越好</p>
+<p>这个是举不出反例的，主要就是按结束顺序排序再输出</p>
+<p>AC代码如下:</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+struct node //定义结构体 
+{
+	int start,end; //开始和结束 
+}a[1000010];
+bool cmp(node a,node b) //快排规则定义 
+{
+	return a.end&lt;b.end; 
+}
+int main()
+{
+	int n,ans=0;
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++)
+		cin&gt;&gt;a[i].start&gt;&gt;a[i].end; 
+	sort(a,a+n,cmp); //系统自带的快排 
+	for(int i=0;i&lt;n;i++)
+	{
+		if(a[i].start==-1)	continue; //这里我直接用start判断是否可以执行 
+		ans++; //方案数++ 
+		for(int j=i+1;j&lt;n;j++)
+			if(a[j].start&lt;a[i].end)
+				a[j].start=-1; //把与a[i]重合的设置成-1 
+	}
+	cout&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[洛谷 P1541 乌龟棋]]></title>
+        <id>https://cgoat1.github.io/post/luo-gu-p1541-wu-gui-qi</id>
+        <link href="https://cgoat1.github.io/post/luo-gu-p1541-wu-gui-qi">
+        </link>
+        <updated>2020-02-12T12:16:55.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://www.luogu.org/problem/P1541">P1541 乌龟棋</a></p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+using namespace std;
+int a[400],b,dp[45][45][45][45];
+int main()
+{
+	int n,m,c[5]={0};
+	cin&gt;&gt;n&gt;&gt;m;
+	for(int i=0;i&lt;n;i++)
+	{
+		cin&gt;&gt;a[i];
+	}
+	for(int i=1;i&lt;=m;i++)
+	{
+		cin&gt;&gt;b;
+		c[b]++;
+	}
+	for(int i=0;i&lt;=c[1];i++)
+	for(int j=0;j&lt;=c[2];j++)
+	for(int k=0;k&lt;=c[3];k++)
+	for(int x=0;x&lt;=c[4];x++)
+	{
+		if(i-1&gt;=0)
+			dp[i][j][k][x]=max(dp[i-1][j][k][x],dp[i][j][k][x]);
+		if(j-1&gt;=0)
+			dp[i][j][k][x]=max(dp[i][j-1][k][x],dp[i][j][k][x]);
+		if(k-1&gt;=0)
+			dp[i][j][k][x]=max(dp[i][j][k-1][x],dp[i][j][k][x]);
+		if(x-1&gt;=0)
+			dp[i][j][k][x]=max(dp[i][j][k][x-1],dp[i][j][k][x]);
+		dp[i][j][k][x]+=a[i+j*2+k*3+x*4];
+	}
+	cout&lt;&lt;dp[c[1]][c[2]][c[3]][c[4]]&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[最小生成树]]></title>
         <id>https://cgoat1.github.io/post/zui-xiao-sheng-cheng-shu</id>

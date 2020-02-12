@@ -1,11 +1,11 @@
 <html>
 <head>
-    <meta charset="utf-8" />
+  <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="all,follow">
 <meta name="googlebot" content="index,follow,snippet,archive">
-<title>数学 | cgoat1&#39;s blog</title>
+<title>洛谷 P1803 【凌乱的yyy / 线段覆盖】 | cgoat1&#39;s blog</title>
 <link rel="shortcut icon" href="https://cgoat1.github.io//favicon.ico?v=1581510128221">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cgoat1.github.io//styles/main.css" type='text/css' media='all'>
@@ -20,7 +20,8 @@
 </head>
 <body class="home blog ct-body standard">
 <div id="overflow-container" class="overflow-container">
-    <header id="site-header" class="site-header" role="banner">
+  <a class="skip-content" href="#main">Skip to content</a>
+  <header id="site-header" class="site-header" role="banner">
     <div class='top-navigation top-navigation-important'>
         <div class='container'>
             <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
@@ -131,182 +132,156 @@
 
 </header>
 
-        <div class="main-content">
-            <div class="current-tag-container">
-                <h2 class="title">
-                    标签：#数学
-                </h2>
+
+  <div id="main" class="main" role="main">
+    <div id="loop-container" class="loop-container">
+      <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+        
+
+        <div class="entry-meta">
+          <span class="date">· 2020-02-12 ·</span> <span> / </span>
+          <span class="author">
+            <a href="https://cgoat1.github.io/" title="" rel="author"> Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></a>
+          </span>
+          
+            <span class="category">
+                    <span> / </span>
+                    <a href="https://cgoat1.github.io/tag/-mcE0IgON">题解</a>
+                </span>
+          
+        </div>
+        <div class='entry-header'>
+          <h1 class='entry-title'>洛谷 P1803 【凌乱的yyy / 线段覆盖】</h1>
+        </div>
+        <div class="entry-container">
+          <div class="entry-content">
+            <article>
+              <p>这道题是一道贪心的题<br>
+如果我们要看贪心策略是否正确，我们必须先要举不出反例或者证明这是绝对正确</p>
+<h4 id="几种常见错误的贪心策略本蒟蒻一开始的策略">几种常见错误的贪心策略（本蒟蒻一开始的策略）：</h4>
+<h4 id="1最早开始">1.最早开始</h4>
+<p>按照越早开始的排序，这个十分容易举出反例</p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.luogu.com.cn/upload/pic/68638.png" alt="" loading="lazy"></figure>
+<p>假如这种规则是对的，那么就会选择蓝色的线段，但最多的形况不是这样，所以是错误的</p>
+<h4 id="2最短线段">2.最短线段</h4>
+<p>按照线段长度的排序，这个也十分容易举出反例</p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.luogu.com.cn/upload/pic/68636.png" alt="" loading="lazy"></figure>
+<p>假如这种规则是对的，那么就会选择蓝色的线段，但最多的形况不是这样，所以是错误的</p>
+<h4 id="3冲突最少">3.冲突最少</h4>
+<p>按照线段冲突的个数的排序，这个挺难举出反例（也挺难想到的）</p>
+<figure data-type="image" tabindex="3"><img src="https://cdn.luogu.com.cn/upload/pic/68643.png" alt="" loading="lazy"></figure>
+<p>假如这种规则是对的，那么就会选择中间蓝色的线段，但最多的形况是选红色的线段，所以这个也是错误的</p>
+<p>接下来讲一下正确的写法：最早结束</p>
+<p>证明:排序后当你选了一个线段后,下一个开始位置一定大于等于现在线段的终止位置，所以终止位置肯定越早越好</p>
+<p>这个是举不出反例的，主要就是按结束顺序排序再输出</p>
+<p>AC代码如下:</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+struct node //定义结构体 
+{
+	int start,end; //开始和结束 
+}a[1000010];
+bool cmp(node a,node b) //快排规则定义 
+{
+	return a.end&lt;b.end; 
+}
+int main()
+{
+	int n,ans=0;
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++)
+		cin&gt;&gt;a[i].start&gt;&gt;a[i].end; 
+	sort(a,a+n,cmp); //系统自带的快排 
+	for(int i=0;i&lt;n;i++)
+	{
+		if(a[i].start==-1)	continue; //这里我直接用start判断是否可以执行 
+		ans++; //方案数++ 
+		for(int j=i+1;j&lt;n;j++)
+			if(a[j].start&lt;a[i].end)
+				a[j].start=-1; //把与a[i]重合的设置成-1 
+	}
+	cout&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+
+            </article>
+          </div>
+          <div class='entry-meta-bottom'>
+            <div class="entry-categories">
+              <p>
+                <span>Categories</span>
+                
+                  
+                    
+                  <a href="https://cgoat1.github.io/tag/-mcE0IgON" title="View all posts in 题解">题解</a>
+                    
+                    
+                    
+                  <a href="https://cgoat1.github.io/tag/I4MDVs2KE" title="View all posts in 算法">算法</a>
+                    
+                    
+                    
+                  <a href="https://cgoat1.github.io/tag/ImnTa8Qa7" title="View all posts in 技巧">技巧</a>
+                    
+                    
+                    
+                  <a href="https://cgoat1.github.io/tag/Vn2U28BhL" title="View all posts in 数学">数学</a>
+                    
+                    
+                    
+                  <a href="https://cgoat1.github.io/tag/RaVTICqod" title="View all posts in 规划">规划</a>
+                    
+                    
+              </p>
             </div>
-        </div>
-    <div id="main" class="main" role="main">
-  <h1 class="screen-reader-text">Posts</h1>
-  
-  <div id="loop-container" class="loop-container">
-    <div class="post type-post status-publish format-standard  hentry category-design tag-memories
-    tag-normal-post tag-standard-2 excerpt zoom full-without-featured
-      
-      even
-       excerpt">
-      
-      <div class="excerpt-container">
-        <div class="excerpt-meta">
-          <span class="date">  · 2020-02-12 ·</span> <span> / </span>
-          <span class="author">
-              <a href="https://cgoat1.github.io/" title="Posts by  cgoat1&#39;s blog" rel="author"> cgoat1&#39;s blog</a>
-          </span>
-            
-                <span> / </span>
-                <span class="category">
-                        <a href="https://cgoat1.github.io/tag/ImnTa8Qa7">技巧</a>
-                </span>
-            
-                <span> / </span>
-                <span class="category">
-                        <a href="https://cgoat1.github.io/tag/Vn2U28BhL">数学</a>
-                </span>
-            
-
-        </div>
-        <div class='excerpt-header'>
-          <h2 class='excerpt-title'>
-            <a href="https://cgoat1.github.io/post/yi-yuan-er-ci-fang-cheng-xin-jie-fa"> 一元二次方程新解法 </a>
-          </h2>
-        </div>
-        <div class='excerpt-content'>
-          <article>
+            <div class="entry-tags">
+              <p><span>Tags</span>
+              </p>
+            </div>
+          </div>
+          <div class="author-meta">
+            <div class="author">
+              <img alt='' src="https://cgoat1.github.io//images/avatar.png?v=1581510128221" class='avatar avatar-72 photo' height='72' width='72'>
+              <span>WRITTEN BY: &nbsp;&nbsp;&nbsp;<a href='https://cgoat1.github.io/'>Cgoat1</a> </span>
+            </div>
+            <div class="bio">
+              <p></p>
               
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div id="loop-container" class="loop-container">
-    <div class="post type-post status-publish format-standard  hentry category-design tag-memories
-    tag-normal-post tag-standard-2 excerpt zoom full-without-featured
-      
-        odd
-       excerpt">
-      
-      <div class="excerpt-container">
-        <div class="excerpt-meta">
-          <span class="date">  · 2020-02-11 ·</span> <span> / </span>
-          <span class="author">
-              <a href="https://cgoat1.github.io/" title="Posts by  cgoat1&#39;s blog" rel="author"> cgoat1&#39;s blog</a>
-          </span>
-            
-                <span> / </span>
-                <span class="category">
-                        <a href="https://cgoat1.github.io/tag/ImnTa8Qa7">技巧</a>
-                </span>
-            
-                <span> / </span>
-                <span class="category">
-                        <a href="https://cgoat1.github.io/tag/Vn2U28BhL">数学</a>
-                </span>
-            
-
-        </div>
-        <div class='excerpt-header'>
-          <h2 class='excerpt-title'>
-            <a href="https://cgoat1.github.io/post/ru-he-shou-dong-kai-ping-fang"> 如何手动开平方 </a>
-          </h2>
-        </div>
-        <div class='excerpt-content'>
-          <article>
+                
               
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div id="loop-container" class="loop-container">
-    <div class="post type-post status-publish format-standard  hentry category-design tag-memories
-    tag-normal-post tag-standard-2 excerpt zoom full-without-featured
-      
-      even
-       excerpt">
-      
-      <div class="excerpt-container">
-        <div class="excerpt-meta">
-          <span class="date">  · 2020-02-11 ·</span> <span> / </span>
-          <span class="author">
-              <a href="https://cgoat1.github.io/" title="Posts by  cgoat1&#39;s blog" rel="author"> cgoat1&#39;s blog</a>
-          </span>
-            
-                <span> / </span>
-                <span class="category">
-                        <a href="https://cgoat1.github.io/tag/RaVTICqod">规划</a>
-                </span>
-            
-                <span> / </span>
-                <span class="category">
-                        <a href="https://cgoat1.github.io/tag/Vn2U28BhL">数学</a>
-                </span>
-            
-
-        </div>
-        <div class='excerpt-header'>
-          <h2 class='excerpt-title'>
-            <a href="https://cgoat1.github.io/post/wei-shi-me-bi-xiu-5-ge-mo-kuai-an-zhao-14523-shun-xu-he-li-zhuan-zai"> 为什么必修5个模块按照1、4、5、2、3顺序合理？(转载) </a>
-          </h2>
-        </div>
-        <div class='excerpt-content'>
-          <article>
+                
               
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div id="loop-container" class="loop-container">
-    <div class="post type-post status-publish format-standard  hentry category-design tag-memories
-    tag-normal-post tag-standard-2 excerpt zoom full-without-featured
-      
-        odd
-       excerpt">
-      
-      <div class="excerpt-container">
-        <div class="excerpt-meta">
-          <span class="date">  · 2020-02-10 ·</span> <span> / </span>
-          <span class="author">
-              <a href="https://cgoat1.github.io/" title="Posts by  cgoat1&#39;s blog" rel="author"> cgoat1&#39;s blog</a>
-          </span>
-            
-                <span> / </span>
-                <span class="category">
-                        <a href="https://cgoat1.github.io/tag/Vn2U28BhL">数学</a>
-                </span>
-            
-
-        </div>
-        <div class='excerpt-header'>
-          <h2 class='excerpt-title'>
-            <a href="https://cgoat1.github.io/post/fu-he-er-ci-gen-shi"> 复合二次根式 </a>
-          </h2>
-        </div>
-        <div class='excerpt-content'>
-          <article>
+                
               
-          </article>
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+            </div>
+          </div>
         </div>
+          
+            <nav class="navigation pagination" role="navigation">
+              <h2 class="screen-reader-text">Posts navigation</h2>
+              <div class="nav-links">
+                <a class="next page-numbers" href="https://cgoat1.github.io/post/luo-gu-p1541-wu-gui-qi">下一篇->洛谷 P1541 乌龟棋</a>
+              </div>
+            </nav>
+          
       </div>
-    </div>
-  </div>
-  
-</div>
-
-    <nav class="navigation pagination" role="navigation">
-    <h2 class="screen-reader-text">Posts navigation</h2>
-    <div class="nav-links">
+      <section id="comments" class="comments">
         
-        
+      </section>
     </div>
-</nav>
-
-    <footer id="site-footer" class="site-footer" role="contentinfo">
+  </div>
+  <footer id="site-footer" class="site-footer" role="contentinfo">
     <h1>
         <a href="https://cgoat1.github.io/"> cgoat1&#39;s blog </a>
     </h1>
@@ -350,3 +325,4 @@
 </div>
 </body>
 </html>
+
