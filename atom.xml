@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cgoat1.github.io/</id>
     <title>cgoat1&apos;s blog</title>
-    <updated>2020-02-13T01:45:01.851Z</updated>
+    <updated>2020-02-13T04:10:54.018Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cgoat1.github.io/"/>
     <link rel="self" href="https://cgoat1.github.io/atom.xml"/>
@@ -10,6 +10,28 @@
     <logo>https://cgoat1.github.io/images/avatar.png</logo>
     <icon>https://cgoat1.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, cgoat1&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[清华，北大，浙江大学课程资料]]></title>
+        <id>https://cgoat1.github.io/post/qing-hua-bei-da-zhe-jiang-da-xue-ke-cheng-zi-liao</id>
+        <link href="https://cgoat1.github.io/post/qing-hua-bei-da-zhe-jiang-da-xue-ke-cheng-zi-liao">
+        </link>
+        <updated>2020-02-13T03:33:35.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2>
+<p>来到一所大学，从第一次接触许多课，直到一门一门完成，这个过程中我们时常收集起许多资料和情报。</p>
+<p>有些是需要在网上搜索的电子书，每次见到一门新课程，Google 一下教材名称，有的可以立即找到，有的却是要花费许多眼力；有些是历年试卷或者 A4 纸，前人精心收集制作，抱着能对他人有用的想法公开，却需要在各个群或者 CC98 中摸索以至于从学长手中代代相传；有些是上完一门课才恍然领悟的技巧，原来这门课重点如此，当初本可以更轻松地完成得更好……</p>
+<p>我也曾很努力地收集各种课程资料，但到最后，某些重要信息的得到却往往依然是纯属偶然。这种状态时常令我感到后怕与不安。我也曾在课程结束后终于有了些许方法与总结，但这些想法无处诉说，最终只能把花费时间与精力才换来的经验耗散在了漫漫的遗忘之中。</p>
+<p>我为这一年一年，这么多人孤军奋战的重复劳动感到不平。</p>
+<p>我希望能够将这些隐晦的、不确定的、口口相传的资料和经验，变为公开的、易于获取的和大家能够共同完善、积累的共享资料。</p>
+<p>我希望只要是前人走过的弯路，后人就不必再走。这是我的信念，也是我建立这个项目的原因。</p>
+<h2 id="北京大学">北京大学</h2>
+<p>Github链接：https://github.com/lib-pku/libpku</p>
+<h2 id="清华大学">清华大学</h2>
+<p>Github链接：https://github.com/PKUanonym/REKCARC-TSC-UHT<br>
+Github链接：https://github.com/Trinkle23897/Undergraduate</p>
+<h2 id="浙江大学">浙江大学</h2>
+<p>Github链接：https://github.com/QSCTech/zju-icicles</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[洛谷 P1548棋盘问题]]></title>
         <id>https://cgoat1.github.io/post/luo-gu-p1548-qi-pan-wen-ti</id>
@@ -1338,36 +1360,6 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p>同理下移32，组成8532，这时的根结果为87，取87<em>20=1740，个位的0先空着，心算1745</em>5肯定会超，应该是1744*4=6976，计算出差值1556。</p>
 <p>这时候只剩下1了，而下移两位是必须的，所以补0，即下移10组成155610；这时的根结果为874，取874<em>20=17480，个位先空着，计算出17488</em>8正合适，计算出差值15706。</p>
 <p>如果还想计算下去，继续下移两个零，组成1570600，取8748<em>20=174960，这里估算还是8，即174968</em>8，以下具体步骤就省略了，这时的开方结果得到为87.488，或四舍五入为87.49。如果要求只保留一位小数，则结果就为87.5。当然若想求得更准确的位数，计算下去就可以了。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[为什么必修5个模块按照1、4、5、2、3顺序合理？(转载)]]></title>
-        <id>https://cgoat1.github.io/post/wei-shi-me-bi-xiu-5-ge-mo-kuai-an-zhao-14523-shun-xu-he-li-zhuan-zai</id>
-        <link href="https://cgoat1.github.io/post/wei-shi-me-bi-xiu-5-ge-mo-kuai-an-zhao-14523-shun-xu-he-li-zhuan-zai">
-        </link>
-        <updated>2020-02-11T10:27:16.000Z</updated>
-        <content type="html"><![CDATA[<p>不少新课程实验区的相关学校多数地区新课程数学必修5个模块按照1-4-5-2-3的顺序开设。深究之，有如下理由。</p>
-<h2 id="一-四条主线">一、四条主线</h2>
-<p>通过研究，我们认为高中数学新课程必修与选修IA(即必修模块之数学1——数学5及选修系列1（文）和选修系列2（理）)的主干知识由函数主线、几何主线、概率与统计主线和算法主线这四条主线构成。<br>
-新课程必修与选修IA的四条主线如下：</p>
-<h3 id="1-函数主线">1、函数主线</h3>
-<p>内容：集合（数学1）、函数概念与基本初等函数I（指数函数、对数函数、幂函数）（数学1）；基本初等函数II（三角函数）（数学4）、三角恒等变换（数学4）、解三角形（数学5）、数列（数学5）、不等式（数学5）、导数及其应用（选修1-1和选修2-2）；数系的扩充与复数的引入（选修1-2和选修2-2）。教学内容的内在逻辑关系如下。<br>
-<img src="https://cgoat1.github.io//post-images/1581417176464.png" alt="" loading="lazy"></p>
-<h3 id="2-几何主线">2、几何主线</h3>
-<p>内容：立体几何初步（数学2）、平面解析几何初步（数学2）、平面上的向量（数学4）、圆锥曲线与方程（选修1-1和选修2-2）、空间中的向量与立体几何（选修2-2）。教学内容的内在逻辑关系如下。<br>
-<img src="https://cgoat1.github.io//post-images/1581417187468.png" alt="" loading="lazy"></p>
-<h3 id="3-概率与统计主线">3、概率与统计主线</h3>
-<p>内容：统计（数学3）、统计案例（选修1-2和选修2-3）、概率（数学3及选修2-3）、计数原理（选修2-3）。教学内容的内在逻辑关系如下。<br>
-<img src="https://cgoat1.github.io//post-images/1581417192274.png" alt="" loading="lazy"></p>
-<h3 id="4-算法主线">4、算法主线</h3>
-<p>内容：算法初步（数学）、常用逻辑用语（选修1-1和选修2-1）、推理与证明（选修1-2和选修2-2）、框图（选修1-2）、算法思想在高中数学中的渗透。<br>
-本部分是新增内容，虽然教材只安排了一章的教学内容，但算法在新课程中地位独特。《普通高中数学课程标准（实验）》指出：“算法是一个全新的课题，已经成为计算科学的重要基础，它在科学技术和社会发展中起着越来越重要的作用。算法的思想和初步知识，也正在成为普通公民的常识。在必修课程中将学习算法的基本思想和初步知识，算法思想将贯穿高中数学课程的相关部分。”由此可见算法在新课程中独特的地位：算法思想既是学生终身学习和发展的必备素质之一，也是学生学习高中数学的思维工具，更是学生解决数学问题的操作性原则。教学内容的内在逻辑关系如下。<br>
-<img src="https://cgoat1.github.io//post-images/1581417198256.png" alt="" loading="lazy"><br>
-由此观之，数学1、数学4、数学5主要是函数主线基础，数学2是高中几何主线基础，数学3是高中概率与统计主线基础和算法主线基础。1-4-5-2-3的开设顺序更接近现行教材的逻辑体系，从操作层面降低了新课程实施的难度。</p>
-<h2 id="二-其他因素">二、其他因素</h2>
-<p>新课程数学必修5个模块按照1-4-5-2-3的开设顺序更符合学生的认知水平和规律，更有利于学生主动构建知识体系，降低学生的学习成本。</p>
-<h2 id="三-其他">三、其他</h2>
-<p>虽然新课程数学必修5个模块按照1-2-4-5-3等顺序开设也有合理性，但多年教学一线的经验表明，对优生而言可能无所谓，但对大面积中等生而言，数学1的函数知识学习后接着学习数学2的几何，再学数学4和数学5的函数相关知识时，又要费很大的力气去复习数学1的函数基础。在高中普遍扩招的前提下，学生学习能力的普遍下降是有目共睹的事实，因此顺序学习函数、几何、算法、统计与概率是降低教学成本、提高教学质量的有效选择之一。</p>
 ]]></content>
     </entry>
 </feed>
