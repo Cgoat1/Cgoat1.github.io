@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="all,follow">
 <meta name="googlebot" content="index,follow,snippet,archive">
-<title>绝对值方程和不定方程 | cgoat1&#39;s blog</title>
-<link rel="shortcut icon" href="https://cgoat1.github.io//favicon.ico?v=1582335486841">
+<title>VMware虚拟机安装android系统 | cgoat1&#39;s blog</title>
+<link rel="shortcut icon" href="https://cgoat1.github.io//favicon.ico?v=1582502603598">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cgoat1.github.io//styles/main.css" type='text/css' media='all'>
 
@@ -153,23 +153,40 @@
         
 
         <div class="entry-meta">
-          <span class="date">· 2020-02-13 ·</span> <span> / </span>
+          <span class="date">· 2020-02-22 ·</span> <span> / </span>
           <span class="author">
             <a href="https://cgoat1.github.io/" title="" rel="author"> Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></a>
           </span>
           
         </div>
         <div class='entry-header'>
-          <h1 class='entry-title'>绝对值方程和不定方程</h1>
+          <h1 class='entry-title'>VMware虚拟机安装android系统</h1>
         </div>
         <div class="entry-container">
           <div class="entry-content">
             <article>
-              <h2 id="1绝对值方程">1.绝对值方程</h2>
-<p>从数轴上看，一个数的绝对值就是表示这个数的点离开远点的距离</p>
-<p class='katex-block katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;#&#039; at position 2: 
-#̲# 2.不定方程'>
-## 2.不定方程</p>
+              <h2 id="常见问题">常见问题</h2>
+<p>开机后黑屏<br>
+解决方法如下：<br>
+1.重新开机后选择第二项，回车<br>
+2.在所有信息刷完后，按下回车<br>
+输入mount –o remount,rw /mnt 回车（rw 后有一个空格，注意）<br>
+出现下图，说明正确，继续下一条指令<br>
+在这里插入图片描述<br>
+再输入vi /mnt/grub/menu.lst 回车出现下面：（vi后面有一个空格）<br>
+在这里插入图片描述<br>
+然后按下 i 键，变为可编辑状态，移动光标，在上图的红线处的quiet后空格，加上nomodeset_<br>
+如下图<br>
+在这里插入图片描述</p>
+<p>按esc 退出编辑<br>
+然后直接输入 “：wq &quot;退出并保存”</p>
+<p>重启安卓虚拟机</p>
+<p>附：关于屏幕太小，更改分辨率，变大屏幕的方法</p>
+<p>如下图，还是在修改的这一行，移动光标至最后<br>
+在这里插入图片描述<br>
+在这里插入图片描述<br>
+在8.1-r1 后加上 UVESA_MODE=1280x1024<br>
+保存方法如上。esc :wq</p>
 
             </article>
           </div>
@@ -220,7 +237,7 @@
           </div>
           <div class="author-meta">
             <div class="author">
-              <img alt='' src="https://cgoat1.github.io//images/avatar.png?v=1582335486841" class='avatar avatar-72 photo' height='72' width='72'>
+              <img alt='' src="https://cgoat1.github.io//images/avatar.png?v=1582502603598" class='avatar avatar-72 photo' height='72' width='72'>
               <span>WRITTEN BY: &nbsp;&nbsp;&nbsp;<a href='https://cgoat1.github.io/'>Cgoat1</a> </span>
             </div>
             <div class="bio">
@@ -245,13 +262,6 @@
             </div>
           </div>
         </div>
-          
-            <nav class="navigation pagination" role="navigation">
-              <h2 class="screen-reader-text">Posts navigation</h2>
-              <div class="nav-links">
-                <a class="next page-numbers" href="https://cgoat1.github.io/post/qing-hua-bei-da-zhe-jiang-da-xue-ke-cheng-zi-liao">下一篇->清华，北大，浙江大学课程资料</a>
-              </div>
-            </nav>
           
       </div>
       <section id="comments" class="comments">

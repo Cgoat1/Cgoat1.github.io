@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cgoat1.github.io/</id>
     <title>cgoat1&apos;s blog</title>
-    <updated>2020-02-22T01:38:15.670Z</updated>
+    <updated>2020-02-24T00:03:29.101Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cgoat1.github.io/"/>
     <link rel="self" href="https://cgoat1.github.io/atom.xml"/>
@@ -462,19 +462,6 @@ a计划.找例题，做例题。不看答案，能做多少就做多少，做完
 想想看，180分钟，整整3个小时！一年可以省出60多天！那可是2个月啊！等于一年给你2个月带薪年假啊！请告诉我哪家公司会给你这么长时间的带薪年假啊！只有我啊！<br>
 我想你只能选择同意。<br>
 加油！你可以的！</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[绝对值方程和不定方程]]></title>
-        <id>https://cgoat1.github.io/post/jue-dui-zhi-fang-cheng-he-bu-ding-fang-cheng</id>
-        <link href="https://cgoat1.github.io/post/jue-dui-zhi-fang-cheng-he-bu-ding-fang-cheng">
-        </link>
-        <updated>2020-02-13T09:21:17.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="1绝对值方程">1.绝对值方程</h2>
-<p>从数轴上看，一个数的绝对值就是表示这个数的点离开远点的距离</p>
-<p class='katex-block katex-error' title='ParseError: KaTeX parse error: Expected &#039;EOF&#039;, got &#039;#&#039; at position 2: 
-#̲# 2.不定方程'>
-## 2.不定方程</p>
 ]]></content>
     </entry>
     <entry>
@@ -1530,6 +1517,106 @@ int main()
 		cout&lt;&lt;ans&lt;&lt;endl;
 	}
 	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[洛谷P1016 旅行家的预算]]></title>
+        <id>https://cgoat1.github.io/post/luo-gu-p1016-lu-xing-jia-de-yu-suan</id>
+        <link href="https://cgoat1.github.io/post/luo-gu-p1016-lu-xing-jia-de-yu-suan">
+        </link>
+        <updated>2020-02-11T14:54:26.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1题面">1.题面</h2>
+<h3 id="题目描述">题目描述</h3>
+<p>一个旅行家想驾驶汽车以最少的费用从一个城市到另一个城市（假设出发时油箱是空的）。给定两个城市之间的距离D1、汽车油箱的容量C（以升为单位）、每升汽油能行驶的距离D2、出发点每升汽油价格P和沿途油站数N（N可以为零），油站ii离出发点的距离Di、每升汽油价格Pi（i=1,2,…,N）。计算结果四舍五入至小数点后两位。如果无法到达目的地，则输出“No Solution”。</p>
+<h3 id="输入格式">输入格式</h3>
+<p>第一行，D1，C，D2，P，N。</p>
+<p>接下来有N行。</p>
+<p>第i+1行，两个数字，油站i离出发点的距离Di和每升汽油价格Pi。</p>
+<h3 id="输出格式">输出格式</h3>
+<p>所需最小费用，计算结果四舍五入至小数点后两位。如果无法到达目的地，则输出“No Solution”。</p>
+<h3 id="输入输出样例">输入输出样例</h3>
+<h4 id="输入">输入</h4>
+<p>275.6 11.9 27.4 2.8 2<br>
+102.0 2.9<br>
+220.0 2.2</p>
+<h4 id="输出">输出</h4>
+<p>26.95</p>
+<h3 id="说明提示">说明/提示</h3>
+<p>N≤6,其余数字≤500</p>
+<h2 id="2解题思路反复贪心">2.解题思路：反复贪心</h2>
+<p><img src="https://img-blog.csdnimg.cn/20191229224412171.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTI1NDY4Nw==,size_16,color_FFFFFF,t_70" alt="" loading="lazy"><br>
+在图中红框范围内</p>
+<ol>
+<li>若有 p[0]&gt;p[j]，则找到第一个满足条件的 j，在A处只加注只可以到 j 处的油，再把 j 处看作为A重新进行如上操作，直到到终点为止</li>
+<li>若无 p[0]&gt;p[j]，则找到其中最小的p[j]，在A处加满油，求出到 j 处油箱剩余的容积，再把 j 处看作为A重新进行如上操作，直到到终点为止</li>
+<li>若无 j，则输出“No Solution”</li>
+</ol>
+<h2 id="3代码实现">3.代码实现</h2>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;stdio.h&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+struct node
+{
+	double d,p;
+}a[15];
+int main()
+{
+	double d1,c,d2,k,ans=0,temp=0; //temp表示油箱还剩多少油 
+	int n,i,flag=0;
+	cin&gt;&gt;d1&gt;&gt;c&gt;&gt;d2&gt;&gt;a[0].p&gt;&gt;n;
+	a[0].d=0;
+	a[n+1].d=d1;
+	k=c*d2;
+	for(i=1;i&lt;=n;i++)
+	{
+		cin&gt;&gt;a[i].d&gt;&gt;a[i].p;	
+	}
+	i=0;
+	temp=0;
+	while(a[i].d&lt;d1)
+	{
+		int j=i+1,minp=a[i+1].p,minn=i+1;
+		if(a[j].d-a[i].d&gt;k)
+		{
+			cout&lt;&lt;&quot;No Solution&quot;&lt;&lt;endl;
+			return 0;
+		}
+		flag=0;
+		while(a[j].d-a[i].d&lt;=k &amp;&amp; j&lt;=n+1)
+		{
+			if(a[j].p&lt;a[i].p)
+			{
+				if(temp&gt;(a[j].d-a[i].d)/d2)
+					temp-=(a[j].d-a[i].d)/d2;
+				else
+				{
+					ans+=((a[j].d-a[i].d)/d2-temp)*a[i].p;
+					temp=0;	
+				}
+				i=j;
+				flag=1;
+				break;
+			}
+			if(a[j].p&gt;=a[i].p &amp;&amp; a[j].p&lt;minp)
+			{
+				minp=a[j].p;
+				minn=j;	
+			}
+			j++;
+		}
+		if(flag==0)
+		{
+			ans+=(c-temp)*a[i].p;
+			temp=(k-a[minn].d+a[i].d)/d2;
+			i=minn;
+		}
+		//cout&lt;&lt;temp&lt;&lt;&quot; &quot;&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;ans&lt;&lt;endl;
+	}
+	printf(&quot;%.2lf&quot;,ans);
+ 	return 0;
 }
 </code></pre>
 ]]></content>
