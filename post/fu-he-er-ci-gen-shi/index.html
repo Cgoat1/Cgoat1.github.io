@@ -1,180 +1,107 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="all,follow">
-<meta name="googlebot" content="index,follow,snippet,archive">
+  <head>
+    <meta charset="utf-8" >
+
 <title>复合二次根式 | cgoat1&#39;s blog</title>
-<link rel="shortcut icon" href="https://cgoat1.github.io//favicon.ico?v=1583032649198">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cgoat1.github.io//styles/main.css" type='text/css' media='all'>
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://cgoat1.github.io//favicon.ico?v=1583036450213">
+<link rel="stylesheet" href="https://cgoat1.github.io//styles/main.css">
 
 
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
 
-</head>
-<body class="home blog ct-body standard">
-<div id="overflow-container" class="overflow-container">
-  <a class="skip-content" href="#main">Skip to content</a>
-  <header id="site-header" class="site-header" role="banner">
-    <div class='top-navigation top-navigation-important'>
-        <div class='container'>
-            <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
-                <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fa fa-plus"></i></button>
-                <div class="menu">
-                    <ul id="menu-secondary-items" class="menu-secondary-items">
-                        
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/nBzwAIyvu">资源</a>
-                        </li>
-                            
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/-mcE0IgON">题解</a>
-                        </li>
-                            
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/b5CBhgXCj">代数</a>
-                        </li>
-                            
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/ImnTa8Qa7">技巧</a>
-                        </li>
-                            
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/Vn2U28BhL">数学</a>
-                        </li>
-                            
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/i_WzMhjnf">图论</a>
-                        </li>
-                            
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/I4MDVs2KE">算法</a>
-                        </li>
-                            
-                        
-                            
-                        
-                    </ul>
-                </div>
-            </div>
-            <ul class="social-media-icons">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            </ul>
-        </div>
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="1.二次根式的性质
+二次根式的性质是根式化简的依据，而化二次根式为最简二次根式又是根式计算的基础，常用的基本性质有：
+(a)2=a(a⩾0),ab=a⋅b(a⩾0,b⩾0),ab=ab(a⩾0,b&gt;0)(\sqrt{a})^2=a(a..." />
+    <meta name="keywords" content="代数,数学" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://cgoat1.github.io/">
+        <img src="https://cgoat1.github.io//images/avatar.png?v=1583036450213" class="site-logo">
+        <h1 class="site-title">cgoat1&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-
-    <div class="container">
-        <div id="title-info" class="title-info">
-            <div id='site-title' class='site-title'>
-                <a href="https://cgoat1.github.io/">  cgoat1&#39;s blog </a>
-            </div>
-        </div>
-        <button id="toggle-navigation" class="toggle-navigation">
-            <i class="fa fa-bars"></i>
-        </button>
-        <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
-        <div id="menu-primary" class="menu-container menu-primary" role="navigation">
-            <p class="site-description">keep time,keep mind,keep humble</p>
-            <div class="menu">
-                <ul id="menu-primary-items" class="menu-primary-items">
-                     
-                        
-                            <li id="menu-item" class='menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item'>
-                                <a href="/">首页</a>
-                            </li>
-                        
-                    
-                        
-                            <li id="menu-item" class='menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item'>
-                                <a href="/archives">归档</a>
-                            </li>
-                        
-                    
-                        
-                            <li id="menu-item" class='menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item'>
-                                <a href="/tags">标签</a>
-                            </li>
-                        
-                    
-                        
-                            <li id="menu-item" class='menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item'>
-                                <a href="/post/about">关于</a>
-                            </li>
-                        
-                    
-                </ul>
-            </div>
-        </div>
-    </div>
-
-
-</header>
-
-
-  <div id="main" class="main" role="main">
-    <div id="loop-container" class="loop-container">
-      <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+    <div>
+      
         
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      keep time,keep mind,keep humble
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://cgoat1.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
-        <div class="entry-meta">
-          <span class="date">· 2020-02-10 ·</span> <span> / </span>
-          <span class="author">
-            <a href="https://cgoat1.github.io/" title="" rel="author"> Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></a>
-          </span>
-          
-            <span class="category">
-                    <span> / </span>
-                    <a href="https://cgoat1.github.io/tag/b5CBhgXCj">代数</a>
-                </span>
-          
-            <span class="category">
-                    <span> / </span>
-                    <a href="https://cgoat1.github.io/tag/Vn2U28BhL">数学</a>
-                </span>
-          
-        </div>
-        <div class='entry-header'>
-          <h1 class='entry-title'>复合二次根式</h1>
-        </div>
-        <div class="entry-container">
-          <div class="entry-content">
-            <article>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">复合二次根式</h2>
+            <div class="post-date">2020-02-10</div>
+            
+            <div class="post-content" v-pre>
               <h2 id="1二次根式的性质">1.二次根式的性质</h2>
 <p>二次根式的性质是根式化简的依据，而化二次根式为最简二次根式又是根式计算的基础，常用的基本性质有：</p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><msqrt><mi>a</mi></msqrt><msup><mo>)</mo><mn>2</mn></msup><mo>=</mo><mi>a</mi><mo>(</mo><mi>a</mi><mo>⩾</mo><mn>0</mn><mo>)</mo><mo separator="true">,</mo><msqrt><mrow><mi>a</mi><mi>b</mi></mrow></msqrt><mo>=</mo><msqrt><mi>a</mi></msqrt><mo>⋅</mo><msqrt><mi>b</mi></msqrt><mo>(</mo><mi>a</mi><mo>⩾</mo><mn>0</mn><mo separator="true">,</mo><mi>b</mi><mo>⩾</mo><mn>0</mn><mo>)</mo><mo separator="true">,</mo><msqrt><mfrac><mi>a</mi><mi>b</mi></mfrac></msqrt><mo>=</mo><mfrac><msqrt><mi>a</mi></msqrt><msqrt><mi>b</mi></msqrt></mfrac><mo>(</mo><mi>a</mi><mo>⩾</mo><mn>0</mn><mo separator="true">,</mo><mi>b</mi><mo>&gt;</mo><mn>0</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(\sqrt{a})^2=a(a\geqslant 0),\sqrt{ab}=\sqrt{a}\cdot\sqrt{b}(a\geqslant 0,b\geqslant 0),\sqrt{\frac{a}{b}}=\frac{\sqrt{a}}{\sqrt{b}}(a\geqslant 0,b&gt;0)
@@ -919,155 +846,77 @@ s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
 s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.13278em;"><span></span></span></span></span></span></span></span></span>为无理数，因此<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>=</mo><mn>3</mn><mo separator="true">,</mo><mi>b</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">a=3,b=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，从而<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a+b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>的值为4</p>
 <p>故选B.</p>
 
-            </article>
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://cgoat1.github.io/tag/b5CBhgXCj" class="tag">
+                    代数
+                  </a>
+                
+                  <a href="https://cgoat1.github.io/tag/Vn2U28BhL" class="tag">
+                    数学
+                  </a>
+                
+              </div>
+            
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
           </div>
-          <div class='entry-meta-bottom'>
-            <div class="entry-categories">
-              <p>
-                <span>Categories</span>
-                
-                  
-                    
-                  <a href="https://cgoat1.github.io/tag/nBzwAIyvu" title="View all posts in 资源">资源</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/-mcE0IgON" title="View all posts in 题解">题解</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/b5CBhgXCj" title="View all posts in 代数">代数</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/ImnTa8Qa7" title="View all posts in 技巧">技巧</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/Vn2U28BhL" title="View all posts in 数学">数学</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/i_WzMhjnf" title="View all posts in 图论">图论</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/I4MDVs2KE" title="View all posts in 算法">算法</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/RaVTICqod" title="View all posts in 规划">规划</a>
-                    
-                    
-              </p>
-            </div>
-            <div class="entry-tags">
-              <p><span>Tags</span>
-              </p>
-            </div>
-          </div>
-          <div class="author-meta">
-            <div class="author">
-              <img alt='' src="https://cgoat1.github.io//images/avatar.png?v=1583032649198" class='avatar avatar-72 photo' height='72' width='72'>
-              <span>WRITTEN BY: &nbsp;&nbsp;&nbsp;<a href='https://cgoat1.github.io/'>Cgoat1</a> </span>
-            </div>
-            <div class="bio">
-              <p></p>
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-            </div>
-          </div>
+
         </div>
-          
       </div>
-      <section id="comments" class="comments">
-        
-          
-            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    </div>
 
-<div id="gitalk-container"></div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
 
-<script>
+AOS.init();
 
-  var gitalk = new Gitalk({
-    clientID: '',
-    clientSecret: '',
-    repo: '',
-    owner: '',
-    admin: [''],
-    id: location.pathname,      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
-
-  gitalk.render('gitalk-container')
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
 </script>
 
-          
 
-          
-        
-      </section>
-    </div>
-  </div>
-  <footer id="site-footer" class="site-footer" role="contentinfo">
-    <h1>
-        <a href="https://cgoat1.github.io/"> cgoat1&#39;s blog </a>
-    </h1>
-    <p class="site-description">keep time,keep mind,keep humble</p>
-    <div id="menu-footer" class="menu-container menu-footer" role="navigation">
-        <div class="menu">
-            <ul id="menu-footer-items" class="menu-footer-items">
-            </ul>
-        </div>
-    </div>
-    <ul class="social-media-icons">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    </ul>
-    <div class="design-credit">
-        <p>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></p>
-    </div>
-</footer>
-<script>
-    hljs.initHighlightingOnLoad()
-</script>
-<script src="https://cgoat1.github.io//media/scripts/lib/jquery.min.js"></script>
-<script src="https://cgoat1.github.io//media/scripts/lib/jquerymigrate.js"></script>
-<script src="https://cgoat1.github.io//media/scripts/lib/production.min.js"></script>
 
-</div>
-</body>
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
 </html>
-

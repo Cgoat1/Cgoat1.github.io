@@ -1,180 +1,107 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="robots" content="all,follow">
-<meta name="googlebot" content="index,follow,snippet,archive">
+  <head>
+    <meta charset="utf-8" >
+
 <title>如何手动开平方 | cgoat1&#39;s blog</title>
-<link rel="shortcut icon" href="https://cgoat1.github.io//favicon.ico?v=1583032649198">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cgoat1.github.io//styles/main.css" type='text/css' media='all'>
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://cgoat1.github.io//favicon.ico?v=1583036450213">
+<link rel="stylesheet" href="https://cgoat1.github.io//styles/main.css">
 
 
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
 
-</head>
-<body class="home blog ct-body standard">
-<div id="overflow-container" class="overflow-container">
-  <a class="skip-content" href="#main">Skip to content</a>
-  <header id="site-header" class="site-header" role="banner">
-    <div class='top-navigation top-navigation-important'>
-        <div class='container'>
-            <div id="menu-secondary" class="menu-container menu-secondary" role="navigation">
-                <button id="toggle-secondary-navigation" class="toggle-secondary-navigation"><i class="fa fa-plus"></i></button>
-                <div class="menu">
-                    <ul id="menu-secondary-items" class="menu-secondary-items">
-                        
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/nBzwAIyvu">资源</a>
-                        </li>
-                            
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/-mcE0IgON">题解</a>
-                        </li>
-                            
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/b5CBhgXCj">代数</a>
-                        </li>
-                            
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/ImnTa8Qa7">技巧</a>
-                        </li>
-                            
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/Vn2U28BhL">数学</a>
-                        </li>
-                            
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/i_WzMhjnf">图论</a>
-                        </li>
-                            
-                        
-                            
-                        <li id="menu-item" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item">
-                            <a href="https://cgoat1.github.io/tag/I4MDVs2KE">算法</a>
-                        </li>
-                            
-                        
-                            
-                        
-                    </ul>
-                </div>
-            </div>
-            <ul class="social-media-icons">
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-                    
-                
-            </ul>
-        </div>
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="小数开平方大家肯定都知道，只需背下一些整数的平方再进行逆运算就行。但一遇到一个大数，那可就头晕了，那么一个大数该如何开平方呢，请往下阅读
+方法
+首先划分数字成组，不管是整数还是小数，均以小数点为分界线，向左和向右每两位数字划为一个单元，直到..." />
+    <meta name="keywords" content="技巧,数学" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://cgoat1.github.io/">
+        <img src="https://cgoat1.github.io//images/avatar.png?v=1583036450213" class="site-logo">
+        <h1 class="site-title">cgoat1&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
     </div>
-
-    <div class="container">
-        <div id="title-info" class="title-info">
-            <div id='site-title' class='site-title'>
-                <a href="https://cgoat1.github.io/">  cgoat1&#39;s blog </a>
-            </div>
-        </div>
-        <button id="toggle-navigation" class="toggle-navigation">
-            <i class="fa fa-bars"></i>
-        </button>
-        <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
-        <div id="menu-primary" class="menu-container menu-primary" role="navigation">
-            <p class="site-description">keep time,keep mind,keep humble</p>
-            <div class="menu">
-                <ul id="menu-primary-items" class="menu-primary-items">
-                     
-                        
-                            <li id="menu-item" class='menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item'>
-                                <a href="/">首页</a>
-                            </li>
-                        
-                    
-                        
-                            <li id="menu-item" class='menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item'>
-                                <a href="/archives">归档</a>
-                            </li>
-                        
-                    
-                        
-                            <li id="menu-item" class='menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item'>
-                                <a href="/tags">标签</a>
-                            </li>
-                        
-                    
-                        
-                            <li id="menu-item" class='menu-item menu-item-type-post_type menu-item-object-page current-menu-item current_page_item'>
-                                <a href="/post/about">关于</a>
-                            </li>
-                        
-                    
-                </ul>
-            </div>
-        </div>
-    </div>
-
-
-</header>
-
-
-  <div id="main" class="main" role="main">
-    <div id="loop-container" class="loop-container">
-      <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
+    <div>
+      
         
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      keep time,keep mind,keep humble
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://cgoat1.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
 
-        <div class="entry-meta">
-          <span class="date">· 2020-02-11 ·</span> <span> / </span>
-          <span class="author">
-            <a href="https://cgoat1.github.io/" title="" rel="author"> Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></a>
-          </span>
-          
-            <span class="category">
-                    <span> / </span>
-                    <a href="https://cgoat1.github.io/tag/ImnTa8Qa7">技巧</a>
-                </span>
-          
-            <span class="category">
-                    <span> / </span>
-                    <a href="https://cgoat1.github.io/tag/Vn2U28BhL">数学</a>
-                </span>
-          
-        </div>
-        <div class='entry-header'>
-          <h1 class='entry-title'>如何手动开平方</h1>
-        </div>
-        <div class="entry-container">
-          <div class="entry-content">
-            <article>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">如何手动开平方</h2>
+            <div class="post-date">2020-02-11</div>
+            
+            <div class="post-content" v-pre>
               <p>小数开平方大家肯定都知道，只需背下一些整数的平方再进行逆运算就行。但一遇到一个大数，那可就头晕了，那么一个大数该如何开平方呢，请往下阅读</p>
 <h2 id="方法">方法</h2>
 <p>首先划分数字成组，不管是整数还是小数，均以小数点为分界线，向左和向右每两位数字划为一个单元，直到不够两个数字为止</p>
@@ -207,162 +134,86 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p>这时候只剩下1了，而下移两位是必须的，所以补0，即下移10组成155610；这时的根结果为874，取874<em>20=17480，个位先空着，计算出17488</em>8正合适，计算出差值15706。</p>
 <p>如果还想计算下去，继续下移两个零，组成1570600，取8748<em>20=174960，这里估算还是8，即174968</em>8，以下具体步骤就省略了，这时的开方结果得到为87.488，或四舍五入为87.49。如果要求只保留一位小数，则结果就为87.5。当然若想求得更准确的位数，计算下去就可以了。</p>
 
-            </article>
-          </div>
-          <div class='entry-meta-bottom'>
-            <div class="entry-categories">
-              <p>
-                <span>Categories</span>
-                
-                  
-                    
-                  <a href="https://cgoat1.github.io/tag/nBzwAIyvu" title="View all posts in 资源">资源</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/-mcE0IgON" title="View all posts in 题解">题解</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/b5CBhgXCj" title="View all posts in 代数">代数</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/ImnTa8Qa7" title="View all posts in 技巧">技巧</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/Vn2U28BhL" title="View all posts in 数学">数学</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/i_WzMhjnf" title="View all posts in 图论">图论</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/I4MDVs2KE" title="View all posts in 算法">算法</a>
-                    
-                    
-                    
-                  <a href="https://cgoat1.github.io/tag/RaVTICqod" title="View all posts in 规划">规划</a>
-                    
-                    
-              </p>
             </div>
-            <div class="entry-tags">
-              <p><span>Tags</span>
-              </p>
-            </div>
-          </div>
-          <div class="author-meta">
-            <div class="author">
-              <img alt='' src="https://cgoat1.github.io//images/avatar.png?v=1583032649198" class='avatar avatar-72 photo' height='72' width='72'>
-              <span>WRITTEN BY: &nbsp;&nbsp;&nbsp;<a href='https://cgoat1.github.io/'>Cgoat1</a> </span>
-            </div>
-            <div class="bio">
-              <p></p>
-              
+            
+              <div class="tag-container">
                 
-              
+                  <a href="https://cgoat1.github.io/tag/ImnTa8Qa7" class="tag">
+                    技巧
+                  </a>
                 
-              
+                  <a href="https://cgoat1.github.io/tag/Vn2U28BhL" class="tag">
+                    数学
+                  </a>
                 
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-            </div>
-          </div>
-        </div>
-          
-            <nav class="navigation pagination" role="navigation">
-              <h2 class="screen-reader-text">Posts navigation</h2>
-              <div class="nav-links">
-                <a class="next page-numbers" href="https://cgoat1.github.io/post/wei-shi-me-bi-xiu-5-ge-mo-kuai-an-zhao-14523-shun-xu-he-li-zhuan-zai">下一篇->为什么必修5个模块按照1、4、5、2、3顺序合理？(转载)</a>
               </div>
-            </nav>
-          
-      </div>
-      <section id="comments" class="comments">
-        
-          
-            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://cgoat1.github.io/post/wei-shi-me-bi-xiu-5-ge-mo-kuai-an-zhao-14523-shun-xu-he-li-zhuan-zai">
+                  <h3 class="post-title">
+                    为什么必修5个模块按照1、4、5、2、3顺序合理？(转载)
+                  </h3>
+                </a>
+              </div>
+            
 
-<div id="gitalk-container"></div>
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
 
-<script>
+              
+            
 
-  var gitalk = new Gitalk({
-    clientID: '',
-    clientSecret: '',
-    repo: '',
-    owner: '',
-    admin: [''],
-    id: location.pathname,      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
+          </div>
 
-  gitalk.render('gitalk-container')
-
-</script>
-
-          
-
-          
-        
-      </section>
-    </div>
-  </div>
-  <footer id="site-footer" class="site-footer" role="contentinfo">
-    <h1>
-        <a href="https://cgoat1.github.io/"> cgoat1&#39;s blog </a>
-    </h1>
-    <p class="site-description">keep time,keep mind,keep humble</p>
-    <div id="menu-footer" class="menu-container menu-footer" role="navigation">
-        <div class="menu">
-            <ul id="menu-footer-items" class="menu-footer-items">
-            </ul>
         </div>
+      </div>
     </div>
-    <ul class="social-media-icons">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    </ul>
-    <div class="design-credit">
-        <p>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></p>
-    </div>
-</footer>
-<script>
-    hljs.initHighlightingOnLoad()
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
 </script>
-<script src="https://cgoat1.github.io//media/scripts/lib/jquery.min.js"></script>
-<script src="https://cgoat1.github.io//media/scripts/lib/jquerymigrate.js"></script>
-<script src="https://cgoat1.github.io//media/scripts/lib/production.min.js"></script>
 
-</div>
-</body>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
 </html>
-
